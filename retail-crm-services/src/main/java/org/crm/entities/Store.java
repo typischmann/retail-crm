@@ -53,7 +53,6 @@ public class Store {
 	inverseJoinColumns={@JoinColumn(name="warehouse_id", referencedColumnName="id")})
 	private List<Warehouse> warehouses;
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="delta_ts")
 	private Timestamp delta_ts;
 
@@ -104,7 +103,7 @@ public class Store {
 	public void setDelta_ts(Timestamp delta_ts) {
 		this.delta_ts = delta_ts;
 	}
-
+	
 	public List<Warehouse> getWarehouses() {
 		return warehouses;
 	}

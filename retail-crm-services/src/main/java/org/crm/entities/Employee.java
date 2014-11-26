@@ -27,15 +27,13 @@ public class Employee {
 
 	@Column(name="second_name")
 	private String secondName;
-	
-	@Temporal(TemporalType.DATE)
+
 	@Column(name="start_date")
 	private Date startDate;
-	
-	@Temporal(TemporalType.DATE)
+
 	@Column(name="end_date")
 	private Date endDate;
-	
+
 	@Column(name="note")
 	private String note;
 	

@@ -45,15 +45,15 @@ public class Warehouse {
 	
 	@Column(name="name_en")
 	private String name_en;
-	
+
 	@ManyToMany(mappedBy="warehouses", fetch=FetchType.LAZY)
 	private List<Store> stores;
-	
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="manager_employee_id")
 	private Employee manager;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	@Column(name="delta_ts")
 	private Timestamp delta_ts;
 
@@ -96,5 +96,4 @@ public class Warehouse {
 	public void setDelta_ts(Timestamp delta_ts) {
 		this.delta_ts = delta_ts;
 	}	
-
 }

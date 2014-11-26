@@ -9,6 +9,10 @@ drop table CURRENCY;
 
 drop table DISTRICT;
 
+drop table EMPLOYEE;
+
+drop table DEPARTMENT;
+
 drop table GOODS_INCOME_ITEM;
 
 drop table GOODS_OUTCOME_ITEM;

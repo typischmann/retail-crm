@@ -12,6 +12,40 @@ insert into CURRENCY(NUMERIC_CODE, NAME, FULL_NAME) values('840', 'USD', 'US Dol
 insert into CURRENCY(NUMERIC_CODE, NAME, FULL_NAME) values('978', 'EUR', 'Euro');
 
 
+
+insert into DEPARTMENT values(1, 'CEO', 'Chief Executing Officer', null);
+insert into DEPARTMENT values(2, 'CFO', 'Chief Finance Officer', 1);
+insert into DEPARTMENT values(3, 'CTO', 'Chief Technology Officer', 1);
+insert into DEPARTMENT values(4, 'BD', 'Business Development', 1);
+insert into DEPARTMENT values(5, 'eCP', 'eCommerce Platform', 1);
+insert into DEPARTMENT values(6, 'IR', 'International Retail', 1);
+insert into DEPARTMENT values(7, 'NAR', 'North America Retail', 1);
+insert into DEPARTMENT values(8, 'WS', 'Web Services', 1);
+insert into DEPARTMENT values(9, 'DM', 'Digital Media', 1);
+insert into DEPARTMENT values(10, 'L&S', 'Legal & Secretary', 1);
+insert into DEPARTMENT values(11, 'Kindle', 'Kindle', 1);
+insert into DEPARTMENT values(12, 'RE', 'Real Estate', 2);
+insert into DEPARTMENT values(13, 'Control', 'Control', 2);
+insert into DEPARTMENT values(14, 'China', 'China', 6);
+insert into DEPARTMENT values(15, 'Europe', 'Europe', 6);
+insert into DEPARTMENT values(16, 'India', 'India', 6);
+insert into DEPARTMENT values(17, 'SS', 'Seller Service', 7);
+insert into DEPARTMENT values(18, 'Operations', 'Operations', 7);
+insert into DEPARTMENT values(19, 'T,S&HI', 'Toys, Sports & Home Improvement', 7);
+insert into DEPARTMENT values(20, 'AP', 'Amazon Publishing', 7);
+insert into DEPARTMENT values(21, 'M&V', 'Music & Video', 7);
+insert into DEPARTMENT values(22, 'AS', 'Amazon S3', 8);
+insert into DEPARTMENT values(23, 'DS', 'Database Services', 8);
+insert into DEPARTMENT values(24, 'WP&S', 'Wireless Products & Services', 9);
+insert into DEPARTMENT values(25, 'Kindle', 'Kindle', 10);
+insert into DEPARTMENT values(26, 'PD&S', 'Product Development & Studios', null);
+insert into DEPARTMENT values(27, 'EO', 'Europe Operations', null);
+insert into DEPARTMENT values(28, 'GAS', 'Global Advertising Sales', null);
+insert into DEPARTMENT values(29, 'CS', 'Computing Services', null);
+insert into DEPARTMENT values(30, 'GCF', 'Global Customer Fullfillment', null);
+
+alter sequence department_id_seq restart with 31;
+
 insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Red Tee', 'Red Tee from China');
 insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Green Tee', 'Green Tee from Indian');
 insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Tee Pot', 'Pot from south');
