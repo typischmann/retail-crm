@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="employee")
@@ -20,7 +18,7 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="employee_seq")
 	@SequenceGenerator(name="employee_seq", sequenceName="employee_id_seq")
 	@Column(name="id")
-	private Long id;
+	private Integer id;
 	
 	@Column(name="first_name")
 	private String firstName;

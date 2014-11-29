@@ -11,7 +11,7 @@ public interface DepartmentDao {
 	 * @param id
 	 * @return
 	 */
-	public Department findDepartmentById(Long id);
+	public Department findDepartmentById(Integer id);
 	
 	/**
 	 * 
@@ -25,6 +25,6 @@ public interface DepartmentDao {
 	 * @param id
 	 * @return
 	 */
-	public List<Department> findSubDepartmentsByParentId(Long id);
+	public List<Department> findSubDepartmentsByParentId(Integer id);
 
 }

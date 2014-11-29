@@ -11,14 +11,14 @@ import org.crm.dao.model.DepartmentDao;
 import org.crm.entities.Department;
 import org.springframework.stereotype.Repository;
 
-@Repository("dbo.deparmentDao")
+@Repository("deparmentDao")
 @Transactional
-public class DepartmentDaoImpl implements DepartmentDao {
+public class DepartmentDaoImpl extends AbstractGenericDaoImpl<Integer, Department> implements DepartmentDao {
 
 	@PersistenceContext
 	private EntityManager em;
 	
-	public Department findDepartmentById(Long id) {
+	public Department findDepartmentById(Integer id) {
 		TypedQuery<Department> query=em.createNamedQuery(Department.findDepartmentById, Department.class);
 		query.setParameter("id", id);
 		return query.getSingleResult();
@@ -30,7 +30,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		return query.getResultList();
 	}
 
-	public List<Department> findSubDepartmentsByParentId(Long id) {
+	public List<Department> findSubDepartmentsByParentId(Integer id) {
 		TypedQuery<Department> query=em.createNamedQuery(Department.findSubDepartmentsByParentId, Department.class);
 		query.setParameter("id", id);
 		return query.getResultList();

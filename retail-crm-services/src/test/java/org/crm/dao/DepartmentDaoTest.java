@@ -12,7 +12,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -26,7 +25,7 @@ public class DepartmentDaoTest {
 	
 	@Test
 	public void findDepartmentByIdTest(){
-		Department dep=departmentDao.findDepartmentById((long) 7);
+		Department dep=departmentDao.findDepartmentById( 7);
 		Assert.assertEquals(dep.getName(), "NAR");
 		Assert.assertEquals(dep.getName_en(), "North America Retail");
 		
@@ -55,7 +54,7 @@ public class DepartmentDaoTest {
 	
 	@Test
 	public void findSubDepartmentsByParentIdTest(){
-		List<Department> deps=departmentDao.findSubDepartmentsByParentId((long)7);
+		List<Department> deps=departmentDao.findSubDepartmentsByParentId(7);
 		Assert.assertTrue(deps.size()==5);
 	}
 }

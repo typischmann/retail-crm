@@ -1,5 +1,6 @@
 package org.crm.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,12 +18,17 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="dbo.department")
+@Table(name="department")
 @NamedQueries({
 	@NamedQuery(name=Department.findDepartmentById, query="select d from Department d where d.id=:id"),
 	@NamedQuery(name=Department.findDepartmentsByName, query="select d from Department d where d.name=:name"),
 	@NamedQuery(name=Department.findSubDepartmentsByParentId, query="select d from Department d where d.parent.id=:id")})
-public class Department {
+public class Department implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7074669646491706699L;
 	
 	static final public String findDepartmentById="findDepartmentById";
 	static final public String findDepartmentsByName="findDepartmentsByName";
@@ -33,7 +39,7 @@ public class Department {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="department_seq")
 	@SequenceGenerator(name="department_seq", sequenceName="department_id_seq")
 	@Column(name="id")
-	private Long id;
+	private Integer id;
 
 	@Column(name="name")
 	private String name;
@@ -48,11 +54,11 @@ public class Department {
 	@OneToMany(mappedBy="parent")
 	private List<Department> subDepartments;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

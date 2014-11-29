@@ -15,8 +15,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 @Entity
@@ -34,7 +32,7 @@ public class Store {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="store_seq")
 	@SequenceGenerator(name="store_seq", sequenceName="store_id_seq")
 	@Column(name="id")
-	private Long id;
+	private Integer id;
 	
 	@Column(name="address_id")
 	private Integer address_id;
@@ -56,11 +54,11 @@ public class Store {
 	@Column(name="delta_ts")
 	private Timestamp delta_ts;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
