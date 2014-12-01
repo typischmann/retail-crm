@@ -1,0 +1,35 @@
+# JDBC driver (comma-separated list)
+jdbcDriver=org.postgresql.Driver
+
+# database URL
+jdbcURL=jdbc:postgresql://localhost:5432/Test
+
+# specific data types (The code for Java Data Type)
+# string, getString() = 0; -->nominal
+# boolean, getBoolean() = 1;  -->nominal
+# double, getDouble() = 2; -->numeric
+# byte, getByte() = 3; -->numeric
+# short, getByte() = 4; -->numeric
+# int, getInteger = 5; -->numeric
+# long, getLong() = 6; -->numeric
+# float, getFloat() = 7; -->numeric
+# date, getDate() = 8; -->Date
+# text, getString() = 9; -->string
+# time, getTime() = 10; -->date
+
+varchar=0
+text=0
+float4=2
+float8=2
+int4=5
+serial=5
+oid=5
+timestamp=8
+date=8
+numeric=2
+
+username=postgres
+password=bjy1986717
+
+#query paramerter and data type
+weka_param_id=0
