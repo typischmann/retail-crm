@@ -1,6 +1,5 @@
 package org.crm.weka.dao;
 
-import java.io.File;
 
 import org.crm.weka.dao.api.GenericWekaDao;
 import org.junit.Assert;
@@ -13,7 +12,7 @@ import weka.core.Instances;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:app-context.xml"})
-public class GenericWekaDaoTest {
+public class GenericWekaDaoRIT {
 	
 	@Autowired
 	private GenericWekaDao genericWekaDao;
