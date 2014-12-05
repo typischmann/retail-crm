@@ -86,8 +86,9 @@ DEPARTMENT_ID        INTEGER,
 FIRST_NAME			 VARCHAR(50),
 SECOND_NAME			 VARCHAR(50),
 START_DATE           DATE,
-END_DATE			 DATE default null,
+END_DATE			 DATE 				default null,
 NOTE                 VARCHAR(255),
+DELTA_TS			 TIMESTAMP 			default current_timestamp,
 constraint PK_EMPLOYEE primary key (ID)
 );
 
@@ -102,8 +103,8 @@ INCOME_WAREHOUSE_ID  INTEGER                        not null,
 --Supplier ID
 AMOUNT               NUMERIC(15,2)                  not null,
 DELIVERY_COST		 NUMERIC(15,2),
-INCOME_DATE			 TIMESTAMP,
-DELTA_TS			 TIMESTAMP,
+INCOME_DATE			 TIMESTAMP						default current_timestamp,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_GOODS_INCOME_ITEM primary key (ID)
 );
 
@@ -118,8 +119,8 @@ OUTCOME_WAREHOUSE_ID INTEGER                        not null,
 --Supplier ID
 AMOUNT               NUMERIC(15,2)                  not null,
 DELIVERY_COST		 NUMERIC(15,2),
-OUTCOME_DATE		 TIMESTAMP,
-DELTA_TS			 TIMESTAMP,
+OUTCOME_DATE		 TIMESTAMP						default current_timestamp,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_GOODS_OUTCOME_ITEM primary key (ID)
 );
 
@@ -134,9 +135,9 @@ PRODUCT_ID           INTEGER                        not null,
 AMOUNT               INTEGER		                not null,
 PRODUCT_PRICE_ID	 INTEGER						not null,
 DELIVERY_COST		 NUMERIC(15,2),
-OUTCOME_DATE		 TIMESTAMP,
-INCOME_DATE			 TIMESTAMP,
-DELTA_TS			 TIMESTAMP,
+OUTCOME_DATE		 TIMESTAMP						default current_timestamp,
+INCOME_DATE			 TIMESTAMP						default current_timestamp,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_INVENTORY_MOVE_ITEM primary key (ID)
 );
 
@@ -152,7 +153,7 @@ PRODUCT_ID           INTEGER                        not null,
 WAREHOUSE_ID    	 INTEGER                        not null,
 AMOUNT               NUMERIC(15,2)                  not null,
 PRODUCT_PRICE_ID	 INTEGER						not null,
-DELTA_TS			 TIMESTAMP,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_INVENTORY_REST_ITEM primary key (ID)
 );
 
@@ -229,12 +230,12 @@ START_DATE           		DATE,
 END_DATE             		DATE,
 NOTE                 		VARCHAR(255),
 WARRANTY_PERIOD      		INTEGER,
-DIM_LENGTH           		NUMERIC(12,3)                  default 0 not null,
-DIM_WIDTH            		NUMERIC(12,3)                  default 0 not null,
-DIM_HEIGHT           		NUMERIC(12,3)                  default 0 not null,
-WEIGHT               		NUMERIC(12,3)                  default 0 not null,
+DIM_LENGTH           		NUMERIC(12,3)                  	default 0 not null,
+DIM_WIDTH            		NUMERIC(12,3)                  	default 0 not null,
+DIM_HEIGHT           		NUMERIC(12,3)                  	default 0 not null,
+WEIGHT               		NUMERIC(12,3)                  	default 0 not null,
 IMAGE_FILE_NAME      		VARCHAR(50),
-DELTA_TS			 		TIMESTAMP,
+DELTA_TS			 		TIMESTAMP						default current_timestamp,
 constraint PK_PRODUCT primary key (ID)
 );
 
@@ -258,9 +259,39 @@ PRODUCT_ID           INTEGER                        not null,
 CURRENCY_ID          INTEGER                        not null,
 PRICE_PERCENT     	 NUMERIC(6,2)                  	not null,
 PRICE                NUMERIC(15,2)                  not null,
-DELTA_TS			 TIMESTAMP,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_PRODUCT_PRICE primary key (ID)
 );
+
+/*==========================================================================================================*/
+/* Table: SALE_ORDER                                            											*/
+/*==========================================================================================================*/
+create table SALE_ORDER (
+ID                   		SERIAL,
+STORE_ID         	 		INTEGER,
+PRICE_TYPE_ID        		INTEGER,
+DELIVERY_ADDRESS_ID  		INTEGER,
+RESPONSIBLE_EMPLOYEE_ID  	INTEGER,
+TOTAL_PRICE                	NUMERIC(15,2),
+IS_PAID              		CHAR(1)                        	default 'N' not null,
+DELTA_TS			 		TIMESTAMP						default current_timestamp,
+constraint PK_SALE_ORDER primary key (ID)
+);
+
+/*==============================================================*/
+/* Table: SALE_ORDER_ITEM                                       */
+/*==============================================================*/
+create table SALE_ORDER_ITEM (
+ID                   SERIAL,
+SALE_ORDER_ID        INTEGER                        not null,
+WAREHOUSE_ID         INTEGER                        not null,
+PRODUCT_ID           INTEGER                        not null,
+PRODUCT_PRICE_ID     INTEGER						not null,
+AMOUNT               NUMERIC(15,2)                  not null,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
+constraint PK_SALE_ORDER_ITEM primary key (ID)
+);
+
 
 /*=========================================================================================================*/
 /* Table: STATE																							   */

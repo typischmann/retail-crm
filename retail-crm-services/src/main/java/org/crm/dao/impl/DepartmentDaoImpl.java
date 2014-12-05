@@ -15,8 +15,6 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public class DepartmentDaoImpl extends AbstractGenericDaoImpl<Integer, Department> implements DepartmentDao {
 
-	@PersistenceContext
-	private EntityManager em;
 	
 	public Department findDepartmentById(Integer id) {
 		TypedQuery<Department> query=em.createNamedQuery(Department.findDepartmentById, Department.class);
