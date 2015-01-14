@@ -16,7 +16,7 @@ public abstract class AbstractGenericDaoImpl<PK extends Serializable, T extends 
 	
 	private Class<T> type;
 	
-	public T update(T entity){
+	public T saveOrUpdate(T entity){
 		this.validate(entity);
 		return em.merge(entity);
 	}

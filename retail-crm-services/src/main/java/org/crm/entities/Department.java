@@ -53,6 +53,9 @@ public class Department implements Serializable{
 	
 	@OneToMany(mappedBy="parent")
 	private List<Department> subDepartments;
+	
+	@OneToMany(mappedBy="department")
+	private List<Employee> emloyees;
 
 	public Integer getId() {
 		return id;

@@ -152,7 +152,7 @@ ID                   INTEGER                        not null,
 PRODUCT_ID           INTEGER                        not null,
 WAREHOUSE_ID    	 INTEGER                        not null,
 AMOUNT               NUMERIC(15,2)                  not null,
-PRODUCT_PRICE_ID	 INTEGER						not null,
+TOTAL_PRICE_ID	 	 INTEGER						not null,
 DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_INVENTORY_REST_ITEM primary key (ID)
 );
@@ -310,6 +310,7 @@ constraint PK_REGION primary key (ID)
 /*=========================================================================================================*/
 create table STORE (
 ID                   SERIAL,
+DEPARTMENT_ID        INTEGER,
 ADDRESS_ID			 INTEGER,
 NAME                 VARCHAR(50),
 NAME_EN              VARCHAR(50),

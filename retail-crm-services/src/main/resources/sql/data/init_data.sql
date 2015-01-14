@@ -46,6 +46,10 @@ insert into DEPARTMENT values(30, 'GCF', 'Global Customer Fullfillment', null);
 
 alter sequence department_id_seq restart with 31;
 
+insert into EMPLOYEE values(1,1);
+
+alter sequence employee_id_seq restart with ;
+
 insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Red Tee', 'Red Tee from China');
 insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Green Tee', 'Green Tee from Indian');
 insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Tee Pot', 'Pot from south');

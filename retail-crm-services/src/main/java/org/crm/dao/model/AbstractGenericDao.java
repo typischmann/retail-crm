@@ -9,7 +9,7 @@ public interface AbstractGenericDao<PK extends Serializable, T extends Serializa
 	 * @param entity
 	 * @return
 	 */
-	public T update(T entity);
+	public T saveOrUpdate(T entity);
 	
 	/**
 	 * 

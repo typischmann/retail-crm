@@ -1,5 +1,6 @@
 package org.crm.entities;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -20,13 +22,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name="store")
 @NamedQueries({
-	@NamedQuery(name=Store.findStoreById, query="select s from Store s where s.id = :id"),
+	@NamedQuery(name=Store.findStoreByManager, query = "select s from Store s where s.manager.id = :manager_id"),
 	@NamedQuery(name=Store.findStoreByName, query="select s from Store s where s.name = :name")
 })
-public class Store {
+public class Store implements Serializable{
 	
-	static final public String findStoreById="findStoreById";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2429319439160196666L;
+	
 	static final public String findStoreByName="findStoreByName";
+	
+	static final public String findStoreByManager="findStoreByManager";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="store_seq")
@@ -42,14 +50,15 @@ public class Store {
 	
 	@Column(name="name_en")
 	private String name_en;
-
-	@Column(name="manager_id")
-	private Integer manager_id;
 	
 	@ManyToMany
 	@JoinTable(name="store_warehouse",joinColumns={@JoinColumn(name="store_id", referencedColumnName="id")},
 	inverseJoinColumns={@JoinColumn(name="warehouse_id", referencedColumnName="id")})
 	private List<Warehouse> warehouses;
+	
+	@ManyToOne
+	@JoinColumn(name="manager_employee_id")
+	private Employee manager;
 	
 	@Column(name="delta_ts")
 	private Timestamp delta_ts;
@@ -86,14 +95,6 @@ public class Store {
 		this.name_en = name_en;
 	}
 
-	public Integer getManager_id() {
-		return manager_id;
-	}
-
-	public void setManager_id(Integer manager_id) {
-		this.manager_id = manager_id;
-	}
-
 	public Timestamp getDelta_ts() {
 		return delta_ts;
 	}
@@ -108,6 +109,14 @@ public class Store {
 
 	public void setWarehouses(List<Warehouse> warehouses) {
 		this.warehouses = warehouses;
-	}	
+	}
+
+	public Employee getManager() {
+		return manager;
+	}
+
+	public void setManager(Employee manager) {
+		this.manager = manager;
+	}		
 
 }

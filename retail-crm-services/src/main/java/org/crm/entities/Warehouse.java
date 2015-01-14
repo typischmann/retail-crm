@@ -1,5 +1,6 @@
 package org.crm.entities;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -20,14 +21,19 @@ import javax.persistence.Id;
 @Entity
 @Table(name="warehouse")
 @NamedQueries({
-	@NamedQuery(name=Warehouse.findWarehouseById, query="select w from Warehouse w where w.id = :id"),
+	@NamedQuery(name=Warehouse.findWarehouseByManager, query="select w from Warehouse w where w.manager.id = :manager_id"),
 	@NamedQuery(name=Warehouse.findWarehouseByName, query="select w from Warehouse w where w.name = :name")
 })
-public class Warehouse {
+public class Warehouse implements Serializable {
 	
-	static public final String findWarehouseById="findWarehouseById";
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9084221439189316656L;
+
 	static public final String findWarehouseByName="findWarehouseByName";
+	
+	static public final String findWarehouseByManager="findWarehouseByManager";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="warehouse_seq")
