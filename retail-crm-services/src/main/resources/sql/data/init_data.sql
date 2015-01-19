@@ -1,11 +1,24 @@
 
-insert into CITY(1,'zz','ZHENZHOU','0043',current_time);
-insert into CITY(1,'kf','KAIFENG','0053',current_time);
-insert into CITY(1,'LY','LUOYANG','0743',current_time);
+insert into CITY values(1,	1, 'zz', 'ZHENZHOU', '0043');
+insert into CITY values(2,	1, 'kf', 'KAIFENG',  '0053');
+insert into CITY values(3,	1, 'LY', 'LUOYANG',  '0743');
+insert into CITY values(4, 2, 'jiu jin shan', 'San Fransisco', '');
+insert into CITY values(5, 3, 'luo shan ji', 'Los Angeles', '');
+insert into CITY values(6, 4, 'fei cheng', 'Phoenix', '');
+insert into CITY values(7, 5, 'Dan Fo', 'Denver', '');
+insert into CITY values(8, 6, 'Sheng di ya ge', 'San Diego', '');
+insert into CITY values(9, 7, 'bo shi dun', 'Boston', '');
+insert into CITY values(10, 8, 'Turson', 'Turson', '');
+insert into CITY values(11, 9, 'da la si', 'Dallas', '');
+
+alter sequence city_id_seq restart with 12;
 
 
-insert into COUNTRY (PHONE_CODE, NAME, NAME_EN, DELTA_TS) values('+86', 'CN', 'CHINA', current_time);
-insert into COUNTRY (PHONE_CODE, NAME, NAME_EN, DELTA_TS) values('+49', 'DE', 'Germany', current_time);
+insert into COUNTRY values(1, '+86', 'CN', 'CHINA');
+insert into COUNTRY values(2, '+1', 'USA', 'United State');
+insert into COUNTRY values(3, '+49', 'DE', 'Germany');
+
+alter sequence country_id_seq restart with 4;
 
 insert into CURRENCY(NUMERIC_CODE, NAME, FULL_NAME) values('156', 'CNY', 'China Yuan Renminbi');
 insert into CURRENCY(NUMERIC_CODE, NAME, FULL_NAME) values('840', 'USD', 'US Dollar');
@@ -99,7 +112,35 @@ insert into STATE(COUNTRY_ID, NAME, NAME_EN, DELTA_TS) values(1, 'js', 'JIANGSU'
 insert into STATE(COUNTRY_ID, NAME, NAME_EN, DELTA_TS) values(2, 'Niedersachsen', 'Lower Saxon', current_time);
 insert into STATE(COUNTRY_ID, NAME, NAME_EN, DELTA_TS) values(2, 'Bayern', 'Bavaria', current_time);
 
-insert into STORE() values();
+insert into STORE values (1, 2, 4, 'San Fransisco Store', 'SFS 1700', 2);
+insert into STORE values (2, 6, 5, 'Los Angeles Store', 'LA 2000', 3);
+insert into STORE values (3, 3, 6, 'Phoenix Store', 'P 1700', 4);
+insert into STORE values (4, 5, 7, 'Denver Store', 'D 1700', 5);
+
+alter sequence store_id_seq restart with 5;
+
+insert into WAREHOUSE values (1, 4, 'San Diego Warehouse', 'SD 1700', 2);
+insert into WAREHOUSE values (2, 5, 'Boston Warehouse', 'B 1000', 3);
+insert into WAREHOUSE values (3, 6, 'Turson Warehouse', 'T 1500', 4);
+insert into WAREHOUSE values (4, 7, 'Dallas Warehouse', 'D 1200', 5);
+
+alter sequence warehouse_id_seq restart with 5;
+
+insert into STORE_WAREHOUSE values(1, 1, 1);
+insert into STORE_WAREHOUSE values(2, 1, 2);
+insert into STORE_WAREHOUSE values(3, 1, 3);
+insert into STORE_WAREHOUSE values(4, 2, 1);
+insert into STORE_WAREHOUSE values(5, 2, 3);
+insert into STORE_WAREHOUSE values(6, 2, 4);
+insert into STORE_WAREHOUSE values(7, 3, 2);
+insert into STORE_WAREHOUSE values(8, 3, 3);
+insert into STORE_WAREHOUSE values(9, 4, 1);
+insert into STORE_WAREHOUSE values(10, 4, 3);
+insert into STORE_WAREHOUSE values(11, 4, 4);
+
+alter sequence store_warehouse_id restart with 12;
+
+
 
 
 

@@ -4,7 +4,7 @@ set search_path to dbo;
 /*=========================================================================================================*/
 create table ADDRESS (
 ID                   SERIAL,
-CONTACTABLE_ID       INTEGER  not null,
+CONTACTABLE_ID       INTEGER  				not null,
 LOCATION_ID          INTEGER,
 ADDRESS_STRING       VARCHAR(100),
 ZIP_CODE             VARCHAR(10),
@@ -13,7 +13,7 @@ HOUSE_NUM            VARCHAR(12),
 STREET_NUM           VARCHAR(6),
 APART_NUM            VARCHAR(6),
 NOTE                 VARCHAR(255),
-DELTA_TS			 TIMESTAMP,
+DELTA_TS			 TIMESTAMP				default current_timestamp,
 constraint PK_ADDRESS primary key (ID)
 );
 
@@ -23,10 +23,10 @@ constraint PK_ADDRESS primary key (ID)
 create table CITY (
 ID  				SERIAL,
 STATE_ID 			INTEGER,
-NAME 				VARCHAR(100) NOT NULL,	
+NAME 				VARCHAR(100) 			NOT NULL,	
 NAME_EN 			VARCHAR(100),
 PHONE_CODE 			VARCHAR(6),
-DELTA_TS			TIMESTAMP,
+DELTA_TS			TIMESTAMP				default current_timestamp,
 constraint PK_CITY primary key (ID)
 );
 
@@ -36,9 +36,9 @@ constraint PK_CITY primary key (ID)
 create table COUNTRY (
 ID 					SERIAL,
 PHONE_CODE 			VARCHAR(6),
-NAME 				VARCHAR(50) not null,
+NAME 				VARCHAR(50) 			NOT NULL,
 NAME_EN 			VARCHAR(50),
-DELTA_TS			TIMESTAMP,
+DELTA_TS			TIMESTAMP				DEFAULT current_timestamp,
 constraint PK_COUNTRY primary key (ID)
 );
 
@@ -48,7 +48,7 @@ constraint PK_COUNTRY primary key (ID)
 create table CURRENCY (
 ID                   SERIAL,
 NUMERIC_CODE         CHAR(3),
-NAME                 VARCHAR(10)                    not null,
+NAME                 VARCHAR(10)                    NOT NULL,
 NAME_EN              VARCHAR(10),
 FULL_NAME            VARCHAR(20),
 constraint PK_CURRENCY primary key (ID)
@@ -315,7 +315,7 @@ ADDRESS_ID			 INTEGER,
 NAME                 VARCHAR(50),
 NAME_EN              VARCHAR(50),
 MANAGER_EMPLOYEE_ID  INTEGER,
-DELTA_TS			 TIMESTAMP,
+DELTA_TS			 TIMESTAMP 			default current_timestamp,
 constraint PK_STORE primary key (ID)
 );
 
@@ -338,7 +338,7 @@ ADDRESS_ID 			 INTEGER,
 NAME 				 VARCHAR(100),
 NAME_EN 			 VARCHAR(100),
 MANAGER_EMPLOYEE_ID  INTEGER,
-DELTA_TS			 TIMESTAMP,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_WAREHOUSE primary key (ID)
 );
 
