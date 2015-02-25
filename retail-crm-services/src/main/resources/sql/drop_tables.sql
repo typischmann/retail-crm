@@ -13,15 +13,17 @@ drop table EMPLOYEE;
 
 drop table DEPARTMENT;
 
-drop table GOODS_INCOME_ITEM;
+drop table DEPARTMENT_TYPE;
 
-drop table GOODS_OUTCOME_ITEM;
+drop table ITEMS_IN_STORE;
 
-drop table GOODS_MOVE_ITEM;
-
-drop table GOODS_REST_ITEM;
+drop table ITEMS_IN_WAREHOUSE;
 
 drop table LOCATION;
+
+drop table ORDERS;
+
+drop table ORDER_ITEMS;
 
 drop table PARTNER;
 
@@ -34,6 +36,8 @@ drop table PRODUCT;
 drop table PRODUCT_CATEGORY;
 
 drop table PRODUCT_PRICE;
+
+drop table PRODUCT_TRANSPORT_RECORDS;
 
 drop table STATE;
 

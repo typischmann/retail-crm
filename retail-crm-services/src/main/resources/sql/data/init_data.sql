@@ -1,14 +1,17 @@
-
+/**
+ * if encoding can not be recognized, the following command can be used
+ * set client_encoding to 'UTF-8';
+ */
 insert into CITY values(1,	1, 'zz', 'ZHENZHOU', '0043');
 insert into CITY values(2,	1, 'kf', 'KAIFENG',  '0053');
 insert into CITY values(3,	1, 'LY', 'LUOYANG',  '0743');
-insert into CITY values(4, 2, 'jiu jin shan', 'San Fransisco', '');
-insert into CITY values(5, 3, 'luo shan ji', 'Los Angeles', '');
-insert into CITY values(6, 4, 'fei cheng', 'Phoenix', '');
-insert into CITY values(7, 5, 'Dan Fo', 'Denver', '');
-insert into CITY values(8, 6, 'Sheng di ya ge', 'San Diego', '');
-insert into CITY values(9, 7, 'bo shi dun', 'Boston', '');
-insert into CITY values(10, 8, 'Turson', 'Turson', '');
+insert into CITY values(4, 5, 'jiu jin shan', 'San Fransisco', '');
+insert into CITY values(5, 5, 'luo shan ji', 'Los Angeles', '');
+insert into CITY values(6, 6, 'fei cheng', 'Phoenix', '');
+insert into CITY values(7, 7, 'Dan Fo', 'Denver', '');
+insert into CITY values(8, 5, 'Sheng di ya ge', 'San Diego', '');
+insert into CITY values(9, 8, 'bo shi dun', 'Boston', '');
+insert into CITY values(10, 6, 'Turson', 'Turson', '');
 insert into CITY values(11, 9, 'da la si', 'Dallas', '');
 
 alter sequence city_id_seq restart with 12;
@@ -24,100 +27,174 @@ insert into CURRENCY(NUMERIC_CODE, NAME, FULL_NAME) values('156', 'CNY', 'China 
 insert into CURRENCY(NUMERIC_CODE, NAME, FULL_NAME) values('840', 'USD', 'US Dollar');
 insert into CURRENCY(NUMERIC_CODE, NAME, FULL_NAME) values('978', 'EUR', 'Euro');
 
+insert into DEPARTMENT_TYPE(TYPE_NAME, TYPE_DESCRIPTION) values('Director Bording', '');
+insert into DEPARTMENT_TYPE(TYPE_NAME, TYPE_DESCRIPTION) values('Business Unit', '');
+insert into DEPARTMENT_TYPE(TYPE_NAME, TYPE_DESCRIPTION) values('Team', '');
+insert into DEPARTMENT_TYPE(TYPE_NAME, TYPE_DESCRIPTION) values('Store', '');
+insert into DEPARTMENT_TYPE(TYPE_NAME, TYPE_DESCRIPTION) values('Warehouse', '');
 
-
-insert into DEPARTMENT values(1, 'CEO', 'Chief Executing Officer', null);
-insert into DEPARTMENT values(2, 'CFO', 'Chief Finance Officer', 1);
-insert into DEPARTMENT values(3, 'CTO', 'Chief Technology Officer', 1);
-insert into DEPARTMENT values(4, 'BD', 'Business Development', 1);
-insert into DEPARTMENT values(5, 'eCP', 'eCommerce Platform', 1);
-insert into DEPARTMENT values(6, 'IR', 'International Retail', 1);
-insert into DEPARTMENT values(7, 'NAR', 'North America Retail', 1);
-insert into DEPARTMENT values(8, 'WS', 'Web Services', 1);
-insert into DEPARTMENT values(9, 'DM', 'Digital Media', 1);
-insert into DEPARTMENT values(10, 'L&S', 'Legal & Secretary', 1);
-insert into DEPARTMENT values(11, 'Kindle', 'Kindle', 1);
-insert into DEPARTMENT values(12, 'RE', 'Real Estate', 2);
-insert into DEPARTMENT values(13, 'Control', 'Control', 2);
-insert into DEPARTMENT values(14, 'China', 'China', 6);
-insert into DEPARTMENT values(15, 'Europe', 'Europe', 6);
-insert into DEPARTMENT values(16, 'India', 'India', 6);
-insert into DEPARTMENT values(17, 'SS', 'Seller Service', 7);
-insert into DEPARTMENT values(18, 'Operations', 'Operations', 7);
-insert into DEPARTMENT values(19, 'T,S&HI', 'Toys, Sports & Home Improvement', 7);
-insert into DEPARTMENT values(20, 'AP', 'Amazon Publishing', 7);
-insert into DEPARTMENT values(21, 'M&V', 'Music & Video', 7);
-insert into DEPARTMENT values(22, 'AS', 'Amazon S3', 8);
-insert into DEPARTMENT values(23, 'DS', 'Database Services', 8);
-insert into DEPARTMENT values(24, 'WP&S', 'Wireless Products & Services', 9);
-insert into DEPARTMENT values(25, 'Kindle', 'Kindle', 10);
-insert into DEPARTMENT values(26, 'PD&S', 'Product Development & Studios', null);
-insert into DEPARTMENT values(27, 'EO', 'Europe Operations', null);
-insert into DEPARTMENT values(28, 'GAS', 'Global Advertising Sales', null);
-insert into DEPARTMENT values(29, 'CS', 'Computing Services', null);
-insert into DEPARTMENT values(30, 'GCF', 'Global Customer Fullfillment', null);
+insert into DEPARTMENT values(1, 'CEO', 'Chief Executing Officer', null, 1);
+insert into DEPARTMENT values(2, 'CFO', 'Chief Finance Officer', 1, 1);
+insert into DEPARTMENT values(3, 'CTO', 'Chief Technology Officer', 1, 1);
+insert into DEPARTMENT values(4, 'BD', 'Business Development', 1, 2);
+insert into DEPARTMENT values(5, 'eCP', 'eCommerce Platform', 1, 2);
+insert into DEPARTMENT values(6, 'IR', 'International Retail', 1, 2);
+insert into DEPARTMENT values(7, 'NAR', 'North America Retail', 1, 2);
+insert into DEPARTMENT values(8, 'WS', 'Web Services', 1, 2);
+insert into DEPARTMENT values(9, 'DM', 'Digital Media', 1, 2);
+insert into DEPARTMENT values(10, 'L&S', 'Legal & Secretary', 1, 3);
+insert into DEPARTMENT values(11, 'Kindle', 'Kindle', 1, 3);
+insert into DEPARTMENT values(12, 'RE', 'Real Estate', 2, 3);
+insert into DEPARTMENT values(13, 'Control', 'Control', 2, 3);
+insert into DEPARTMENT values(14, 'China', 'China', 6, 3);
+insert into DEPARTMENT values(15, 'Europe', 'Europe', 6, 3);
+insert into DEPARTMENT values(16, 'India', 'India', 6, 3);
+insert into DEPARTMENT values(17, 'SS', 'Seller Service', 7, 3);
+insert into DEPARTMENT values(18, 'Operations', 'Operations', 7, 3);
+insert into DEPARTMENT values(19, 'T,S&HI', 'Toys, Sports & Home Improvement', 7, 3);
+insert into DEPARTMENT values(20, 'AP', 'Amazon Publishing', 7, 2);
+insert into DEPARTMENT values(21, 'M&V', 'Music & Video', 7, 2);
+insert into DEPARTMENT values(22, 'AS', 'Amazon S3', 8, 2);
+insert into DEPARTMENT values(23, 'DS', 'Database Services', 8, 2);
+insert into DEPARTMENT values(24, 'WP&S', 'Wireless Products & Services', 9, 2);
+insert into DEPARTMENT values(25, 'Kindle', 'Kindle', 10, 3);
+insert into DEPARTMENT values(26, 'PD&S', 'Product Development & Studios', null, 4);
+insert into DEPARTMENT values(27, 'EO', 'Europe Operations', null, 4);
+insert into DEPARTMENT values(28, 'GAS', 'Global Advertising Sales', null, 4);
+insert into DEPARTMENT values(29, 'CS', 'Computing Services', null, 4);
+insert into DEPARTMENT values(30, 'GCF', 'Global Customer Fullfillment', null, 4);
 
 alter sequence department_id_seq restart with 31;
 
 insert into EMPLOYEE values(1,1);
 
-alter sequence employee_id_seq restart with ;
+alter sequence employee_id_seq restart with 2;
 
-insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Red Tee', 'Red Tee from China');
-insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Green Tee', 'Green Tee from Indian');
-insert into PRODUCT_CATEGORY(NAME, NAME_EN) values('Tee Pot', 'Pot from south');
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000001, 1, 10000001, 1, 'SALE', 'Y', 1, 'Y');
 
-insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE, DELTA_TS)
-values(1,1,1,100.00,50,current_time);
-insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE, DELTA_TS)
-values(1,2,1,100.00,25,current_time);
-insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE, DELTA_TS)
-values(2,3,1,100.00,10.50,current_time);
-insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE, DELTA_TS)
-values(3,1,1,95.00,5.50,current_time);
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000002, 1, 10000002, 1, 'SALE', 'Y', 1, 'Y');
+
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000003, 1, 10000003, 1, 'SALE', 'Y', 1, 'Y');
+
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000004, 1, 10000004, 1, 'SALE', 'Y', 1, 'Y');
+
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000005, 1, 10000005, 1, 'SALE', 'Y', 1, 'Y');
+
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000006, 1, 10000006, 1, 'SALE', 'Y', 1, 'Y');
+
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000007, 1, 10000007, 1, 'SALE', 'Y', 1, 'Y');
+
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000008, 1, 10000008, 1, 'SALE', 'Y', 1, 'Y');
+
+insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
+ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
+values(10000009, 1, 10000009, 1, 'SALE', 'Y', 1, 'Y');
+
+alter orders_id_seq restart with 10000010;
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000001, 10000001, 10003, 4);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000002, 10000002, 10005, 14);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000003, 10000003, 10005, 160);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000004, 10000003, 10002, 156);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000005, 10000004, 10005, 11);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000006, 10000005, 10005, 1);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000007, 10000006, 10005, 38);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000008, 10000006, 10002, 2);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000009, 10000006, 10005, 7);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000010, 10000008, 10005, 1);
+
+insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+values(200000011, 10000009, 10003, 28);
+
+alter order_items_id_seq restart with 200000012;
 
 
-insert into PRICE_TYPE(TYPE_NAME, NOTE) values('PRICE','The default price');
-insert into PRICE_TYPE(TYPE_NAME, NOTE) values('LIST_PRICE','The list price');
-insert into PRICE_TYPE(TYPE_NAME, NOTE) values('DISCOUNT','The discounted price');
-insert into PRICE_TYPE(TYPE_NAME, NOTE) values('WHOLESALE_PRICE','The wholesal price');
-insert into PRICE_TYPE(TYPE_NAME, NOTE) values('SMALL_WHOLESALE_PRICE','The small wholesale price');
-insert into PRICE_TYPE(TYPE_NAME, NOTE) values('RETAIL_PRICE','The retail price');
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10001,1,100.00,800);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10002,1,100.00,600);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10003,1,100.00,500);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10004,1,100.00,240);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10005,1,100.00,180);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10006,1,100.00,192);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10007,1,100.00,288);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10008,1,100.00,288);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10009,1,100.00,192);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10010,1,100.00,192);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10011,1,100.00,288);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10012,1,100.00,420);
+insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)
+values(1,10013,1,100.00,300);
+
+
+insert into PRICE_TYPE(TYPE_NAME, DESCRIPTION) values('PRICE','The default price');
+insert into PRICE_TYPE(TYPE_NAME, DESCRIPTION) values('LIST_PRICE','The list price');
+insert into PRICE_TYPE(TYPE_NAME, DESCRIPTION) values('DISCOUNT','The discounted price');
+insert into PRICE_TYPE(TYPE_NAME, DESCRIPTION) values('WHOLESALE_PRICE','The wholesal price');
+insert into PRICE_TYPE(TYPE_NAME, DESCRIPTION) values('SMALL_WHOLESALE_PRICE','The small wholesale price');
+insert into PRICE_TYPE(TYPE_NAME, DESCRIPTION) values('RETAIL_PRICE','The retail price');
 
 
 
-10001		CA	CALENDAR	N	15
-10002		CA	CALENDAR	N	10
-10003		CA	CALENDAR	N	10
-10004		BK	BOOK	Y	90
-10005		BK	BOOK	Y	16
-10006		BK	BOOK	N	10
-10007		BK	BOOK	N	7
-10008		BK	BOOK	N	11
-10009		BK	BOOK	N	10
-10010		BK	BOOK	N	19
-10011		GA	GAME	N	11
-10012		AR	ARTWORK	Y	195
-10013		AR	ARTWORK	Y	195
-10014		AR	ARTWORK	Y	175
-10015		AR	ARTWORK	Y	195
-10016		AR	ARTWORK	Y	195
-10017		AR	ARTWORK	Y	540
+
+insert into STATE values(1, 1, 'hn', 'HENAN');
+insert into STATE values(2, 1, 'js', 'JIANGSU');
+insert into STATE values(3, 3, 'Niedersachsen', 'Lower Saxon');
+insert into STATE values(4, 3, 'Bayern', 'Bavaria');
+insert into STATE values(5, 2, 'California', 'CA');
+insert into STATE values(6, 2, 'Arizona', 'AZ');
+insert into STATE values(7, 2, 'Colorado', 'CO');
+insert into STATE values(8, 2, 'Massachusetts', 'MA');
+insert into STATE values(9, 2, 'Texas', 'TX');
+
+alter sequence state_id_seq restart with 10; 
 
 
-
-
-insert into STATE(COUNTRY_ID, NAME, NAME_EN, DELTA_TS) values(1, 'hn', 'HENAN', current_time);
-insert into STATE(COUNTRY_ID, NAME, NAME_EN, DELTA_TS) values(1, 'js', 'JIANGSU', current_time);
-insert into STATE(COUNTRY_ID, NAME, NAME_EN, DELTA_TS) values(2, 'Niedersachsen', 'Lower Saxon', current_time);
-insert into STATE(COUNTRY_ID, NAME, NAME_EN, DELTA_TS) values(2, 'Bayern', 'Bavaria', current_time);
-
-insert into STORE values (1, 2, 4, 'San Fransisco Store', 'SFS 1700', 2);
-insert into STORE values (2, 6, 5, 'Los Angeles Store', 'LA 2000', 3);
-insert into STORE values (3, 3, 6, 'Phoenix Store', 'P 1700', 4);
-insert into STORE values (4, 5, 7, 'Denver Store', 'D 1700', 5);
-
-alter sequence store_id_seq restart with 5;
 
 insert into WAREHOUSE values (1, 4, 'San Diego Warehouse', 'SD 1700', 2);
 insert into WAREHOUSE values (2, 5, 'Boston Warehouse', 'B 1000', 3);
@@ -138,9 +215,72 @@ insert into STORE_WAREHOUSE values(9, 4, 1);
 insert into STORE_WAREHOUSE values(10, 4, 3);
 insert into STORE_WAREHOUSE values(11, 4, 4);
 
-alter sequence store_warehouse_id restart with 12;
+alter sequence store_warehouse_id_seq restart with 12;
 
+insert into PRODUCT_CATEGORY (ID ,NAME,NAME_EN)
+values(1, '红茶', 'Black Tee');
 
+insert into PRODUCT_CATEGORY (ID ,NAME,NAME_EN)
+values(2, '普洱熟茶', 'Pu Er Shu Tee');
+
+insert into PRODUCT_CATEGORY (ID ,NAME,NAME_EN)
+values(3, '普洱生茶', 'Pu Er Sheng Tee');
+
+alter sequence product_category_id_seq restart with 4;
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10001, 1, '千金红', 'Qian Jin Hong', '千金红', 'QQS-BT-001', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10002, 1, '黄金绣球', 'Huang Jin Xiu Qiu', '黄金绣球', 'QQS-BT-002', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10003, 1, '娜允天香', 'Na Yun Tian Xiang', '娜允天香', 'QQS-BT-003', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10004, 1, '千红', 'Qian Hong', '千红', 'QQS-BT-004', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10005, 1, '蜜香金珠', 'Mi Xiang Jin Zhu', '蜜香金珠', 'QQS-BT-005', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10006, 2, '精腴', 'Jing Yu', '精腴', 'QQS-PT-001', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10007, 2, '涌泉', 'Yong Quan', '涌泉', 'QQS-PT-002', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10008, 3, '思源', 'Si Yuan', '思源', 'QQS-PT-003', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10009, 3, '精武', 'Jing Wu', '精武', 'QQS-PT-004', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10010, 3, '志趣', 'Zhi Qu', '志趣', 'QQS-PT-005', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10011, 2, '物喜', 'Wu Xi', '物喜', 'QQS-PT-006', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10012, 3, '大器', 'Da Qi', '大器', 'QQS-PT-007', '01-03-2015');
+
+insert into PRODUCT (ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
+PRODUCT_INTERNAL_CODE, START_DATE)
+values(10013, 3, '格朗河帕沙', 'Ge Lang He Pa Sha', '格朗河帕沙', 'QQS-GT-001', '01-03-2015');
+
+alter sequence product_id_seq restart with 10014;
 
 
 
