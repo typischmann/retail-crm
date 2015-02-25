@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -59,6 +61,10 @@ public class Store implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="manager_employee_id")
 	private Employee manager;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="deparment_id")
+	private Department department;
 	
 	@Column(name="delta_ts")
 	private Timestamp delta_ts;
@@ -117,6 +123,14 @@ public class Store implements Serializable{
 
 	public void setManager(Employee manager) {
 		this.manager = manager;
-	}		
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 
 }
