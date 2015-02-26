@@ -31,7 +31,8 @@ import org.crm.entities.converter.BooleanToYNConverter;
 @Table(name="Orders")
 @NamedQueries({	@NamedQuery(name=Order.findAllOrdersByDepartment,query="select o from Order o where o.responsibleDepartment.id=:department_id"),
 				@NamedQuery(name=Order.findAllOrdersByEmployee,query="select o from Order o where o.responsibleEmployee.id=:employee_id"),
-				@NamedQuery(name=Order.findOrdersAfterStartDate, query="select o from Order o where o.create_ts > :startDate")})
+				@NamedQuery(name=Order.findOrdersCreatedAfterStartDate, query="select o from Order o where o.create_ts > :startDate"),
+				@NamedQuery(name=Order.findOrdersCreatedBetweenTimeInterval, query="select o from Order o where o.create_ts > :startDate and o.create_ts <= :endDate")})
 @XmlRootElement
 public class Order implements Serializable {
 	
@@ -39,7 +40,9 @@ public class Order implements Serializable {
 	
 	public static final String findAllOrdersByEmployee="findAllOrdersByEmployee";	
 	
-	public static final String findOrdersAfterStartDate="findOrdersAfterStartDate";
+	public static final String findOrdersCreatedAfterStartDate="findOrdersAfterStartDate";
+	
+	public static final String findOrdersCreatedBetweenTimeInterval="findOrdersCreatedBetweenTimeInterval";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="order_seq")
