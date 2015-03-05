@@ -24,6 +24,7 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.crm.entities.adapter.TimeStampAdapter;
 import org.crm.entities.converter.BooleanToYNConverter;
 
@@ -51,15 +52,18 @@ public class Order implements Serializable {
 	private Integer Id;
 	
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="responsible_department_id")
+	@JoinColumn(name="RESPONSIBLE_DEPARTMENT_ID")
+	@JsonIgnore
 	private Department responsibleDepartment;
 	
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="responsible_employee_id")
+	@JsonIgnore
 	private Employee responsibleEmployee;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="parent_order_id", nullable=true)
+	@JsonIgnore
 	private Order parentOrder;
 	
 	@Convert(converter=BooleanToYNConverter.class)
@@ -71,6 +75,7 @@ public class Order implements Serializable {
 	private OrderType orderType;
 	
 	@OneToMany(mappedBy="parentOrder")
+	@JsonIgnore
 	private List<Order> subOrders;
 	
 	@Column(name="status")

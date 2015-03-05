@@ -12,6 +12,9 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public class StoreDaoImpl extends AbstractGenericDaoImpl<Integer, Store> implements StoreDao {
 
+	public StoreDaoImpl(){
+		super(Store.class);
+	}
 	/**
 	 * {@inheritDoc}
 	 */

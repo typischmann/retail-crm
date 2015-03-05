@@ -68,7 +68,13 @@ alter sequence department_id_seq restart with 31;
 
 insert into EMPLOYEE values(1,1);
 
-alter sequence employee_id_seq restart with 2;
+create table EMPLOYEE (ID, DEPARTMENT_ID,FIRST_NAME,SECOND_NAME,START_DATE)
+values(1, 1, '敏玲', '范', '01-03-2015');
+
+create table EMPLOYEE (ID, DEPARTMENT_ID,FIRST_NAME,SECOND_NAME,START_DATE)
+values(2, 1, '晓霞', '曾', '01-03-2015');
+
+alter sequence employee_id_seq restart with 3;
 
 insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
 ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
