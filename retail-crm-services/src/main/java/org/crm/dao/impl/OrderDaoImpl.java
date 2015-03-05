@@ -16,6 +16,9 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public class OrderDaoImpl extends AbstractGenericDaoImpl<Integer, Order> implements OrderDao {
 
+	public OrderDaoImpl(){
+		super(Order.class);
+	}
 	/**
 	 * {@inheritDoc}
 	 */

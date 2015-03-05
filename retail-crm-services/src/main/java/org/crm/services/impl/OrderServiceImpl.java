@@ -2,6 +2,7 @@ package org.crm.services.impl;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import org.crm.dao.model.OrderDao;
 import org.crm.entities.Employee;
@@ -59,6 +60,19 @@ public class OrderServiceImpl implements OrderService {
 		order.setCreate_ts(new Timestamp(new Date().getTime()));
 		order.setDelta_ts(new Timestamp(new Date().getTime()));
 		return order;
+	}
+
+	public Order findOrderById(Integer orderId) {
+		return orderDao.find(orderId);
+	}
+
+	public List<Order> findOrdersCreatedAfterStartDate(Timestamp startDate) {
+		return orderDao.findOrdersCreatedAfterStartDate(startDate);
+	}
+
+	public List<Order> findOrdersCreatedBetweenTimeInterval(
+			Timestamp startDate, Timestamp endDate) {
+		return orderDao.findOrdersCreatedBetweenTimeInterval(startDate, endDate);
 	}
 
 }

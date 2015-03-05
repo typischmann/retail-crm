@@ -13,6 +13,9 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public class DepartmentDaoImpl extends AbstractGenericDaoImpl<Integer, Department> implements DepartmentDao {
 
+	public DepartmentDaoImpl(){
+		super(Department.class);
+	}
 	/**
 	 * {@inheritDoc}
 	 */
