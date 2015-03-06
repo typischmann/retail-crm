@@ -280,7 +280,7 @@ constraint PK_SALE_ORDER primary key (ID)
 /*==============================================================*/
 create table ORDER_ITEMS (
 ID                   			SERIAL,
-SALE_ORDER_ID        			integer,
+ORDER_ID        			integer,
 PRODUCT_ID           			integer                        	not null,
 AMOUNT               			numeric(15,2)                  	not null,
 DELTA_TS			 			timestamp						default current_timestamp,

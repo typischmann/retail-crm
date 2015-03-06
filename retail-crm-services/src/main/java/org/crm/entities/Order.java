@@ -47,7 +47,7 @@ public class Order implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="order_seq")
-	@SequenceGenerator(name="order_seq", sequenceName="order_id_seq")
+	@SequenceGenerator(name="order_seq", sequenceName="orders_id_seq")
 	@Column(name="id")
 	private Integer Id;
 	
@@ -93,8 +93,24 @@ public class Order implements Serializable {
 	@Column(name="delta_ts")
 	private Timestamp delta_ts;
 	
+	@OneToMany(mappedBy="parentOrder")
+	@JsonIgnore
+	private List<OrderItem> orderItems;
 	
 	
+	
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+
+
 	public Integer getId() {
 		return Id;
 	}
