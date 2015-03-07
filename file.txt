@@ -1,1 +1,1 @@
-Need to understand the idea of how does the branck work.
+I am deleting a text in dachuan-dev-branch, I will commit this into the remote. Then I will delete this branch.
