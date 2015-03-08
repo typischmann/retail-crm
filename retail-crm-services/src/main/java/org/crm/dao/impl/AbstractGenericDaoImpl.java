@@ -21,27 +21,41 @@ public class AbstractGenericDaoImpl<PK extends Serializable, T extends Serializa
 	protected AbstractGenericDaoImpl(Class<?> type) {
 		this.type = type;
 	}
-
-	public T saveOrUpdate(T entity) {
+    /**
+     * {@inheritDoc}
+     */
+    public T saveOrUpdate(T entity) {
 		this.validate(entity);
 		return em.merge(entity);
 	}
 
+    /**
+     * {@inheritDoc}
+     */
 	public T persist(T entity) {
 		this.validate(entity);
 		em.persist(entity);
 		return entity;
 	}
 
-	public void remove(PK primaryKey) {
+    /**
+     * {@inheritDoc}
+     */
+    public void remove(PK primaryKey) {
 		em.remove(em.getReference(type, primaryKey));
 	}
 
-	public T find(PK primaryKey) {
+    /**
+     * {@inheritDoc}
+     */
+    public T find(PK primaryKey) {
 		return (T) em.find(type, primaryKey);
 	}
 
-	public void refresh(T entity) {
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh(T entity) {
 		em.refresh(entity);
 	}
 
