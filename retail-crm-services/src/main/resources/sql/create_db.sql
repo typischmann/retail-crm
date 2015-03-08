@@ -218,6 +218,7 @@ ID                   		SERIAL,
 SUPPLIER_PARTNER_ID    		INTEGER,
 PRODUCT_CATEGORY_ID     	INTEGER,
 MANUFACTURER_PARTNER_ID		INTEGER,
+ACTIVE_PRICE_ID				INTEGER,
 NAME                 		VARCHAR(100)                   not null,
 NAME_EN              		VARCHAR(100),
 FULL_NAME            		VARCHAR(100),
@@ -238,7 +239,7 @@ create table PRODUCT_CATEGORY (
 ID                   SERIAL,
 NAME                 VARCHAR(100)                   not null,
 NAME_EN              VARCHAR(100),
-constraint PK_PRODUCT_GROUP primary key (ID)
+constraint PK_PRODUCT_CATEGORY primary key (ID)
 );
 
 /*=========================================================================================================*/
@@ -280,9 +281,10 @@ constraint PK_SALE_ORDER primary key (ID)
 /*==============================================================*/
 create table ORDER_ITEMS (
 ID                   			SERIAL,
-ORDER_ID        			integer,
+ORDER_ID	        			integer,
 PRODUCT_ID           			integer                        	not null,
 AMOUNT               			numeric(15,2)                  	not null,
+PRICE_ID						integer							not null,
 DELTA_TS			 			timestamp						default current_timestamp,
 constraint PK_ORDER_ITEM primary key (ID)
 );

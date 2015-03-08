@@ -3,6 +3,8 @@ package org.crm.entities;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,5 +36,42 @@ public class Product implements Serializable {
 
 	@Column(name = "name")
 	private String productName;
+	
+	
+	@Column(name="product_internal_code")
+	private String productInternalCode;
+	
+	@Embedded
+	private ProductCategory productCategory;
+	
+	
+	
+	@Embeddable
+	public class ProductCategory implements Serializable{
+		@Column(name="id")
+		private Integer id;
+		
+		@Column(name="name")
+		private String name;
+
+		public Integer getId() {
+			return id;
+		}
+
+		public void setId(Integer id) {
+			this.id = id;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+		
+						
+		
+	}
 
 }
