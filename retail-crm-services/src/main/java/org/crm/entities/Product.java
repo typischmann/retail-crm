@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SecondaryTables;
+import javax.persistence.SecondaryTable;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -18,6 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "product")
 @NamedQueries({ @NamedQuery(name = Product.findProductByName, query = "select p from Product p where p.productName = :productName") })
+@SecondaryTables({ @SecondaryTable(name = "product_category", pkJoinColumns = { @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "product_category_id") }) })
 @XmlRootElement
 public class Product implements Serializable {
 
@@ -36,22 +40,19 @@ public class Product implements Serializable {
 
 	@Column(name = "name")
 	private String productName;
-	
-	
-	@Column(name="product_internal_code")
+
+	@Column(name = "product_internal_code")
 	private String productInternalCode;
-	
+
 	@Embedded
 	private ProductCategory productCategory;
-	
-	
-	
+
 	@Embeddable
-	public class ProductCategory implements Serializable{
-		@Column(name="id")
+	public class ProductCategory implements Serializable {
+		@Column(name = "id")
 		private Integer id;
-		
-		@Column(name="name")
+
+		@Column(name = "name")
 		private String name;
 
 		public Integer getId() {
@@ -69,9 +70,7 @@ public class Product implements Serializable {
 		public void setName(String name) {
 			this.name = name;
 		}
-		
-						
-		
+
 	}
 
 }

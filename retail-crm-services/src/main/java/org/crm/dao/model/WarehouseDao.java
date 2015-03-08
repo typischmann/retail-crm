@@ -6,11 +6,25 @@ import org.crm.entities.Employee;
 import org.crm.entities.Warehouse;
 
 public interface WarehouseDao {
-	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public Warehouse getWarehouseById(Integer id);
 	
+	/**
+	 * 
+	 * @param manager
+	 * @return
+	 */
 	public List<Warehouse> getWarehouseByManager(Employee manager);
 	
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public Warehouse getWarehouseByName(String name);
 
 }
