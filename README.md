@@ -1,2 +1,2 @@
 # retail-crm
-It is the development branch of this porject, all changes should be commited on this branch at first
+It is the development branch of this project, all changes should be committed on this branch at first
