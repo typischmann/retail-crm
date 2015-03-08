@@ -9,44 +9,44 @@ public interface EmployeeDao {
 	
 	/**
 	 * 
-	 * @return list of all employees which are sorted by name in alphabetical order.
+	 * @return
 	 */
 	public List<Employee> findAllEmployeesSortedByName();
 	
 	/**
 	 * 
-	 * @param firstName FirstName.
-	 * @param secondName SecondName.
-	 * @return the matched list of employees.
+	 * @param firstName
+	 * @param secondName
+	 * @return
 	 */
 	public List<Employee> findEmployeesByFullName(String firstName, String secondName);
 	
 	/**
 	 * 
-	 * @param secondName SecondName
-     * @return the matched list of employees.
+	 * @param secondName
+	 * @return
 	 */
 	public List<Employee> findEmployeesBySecondNameAndSortedByFirstName(String secondName);
 	
 	/**
 	 * 
-	 * @param startDate hired starting date.
-	 * @param endDate fired ending date or null.
-     * @return the matched list of employees.
+	 * @param startDate
+	 * @param endDate
+	 * @return
 	 */
 	public List<Employee> findEmployeesBetweenDurationAndSortedByName(Date startDate, Date endDate);
 	
 	/**
 	 * 
-	 * @param startDate hired start date.
-     * @return the matched list of employees.
+	 * @param startDate
+	 * @return
 	 */
 	public List<Employee> findEmployeesAfterStartDate(Date startDate);
 	
 	/**
 	 * 
-	 * @param endDate hired ending date, null meaning hiring employees so far.
-     * @return the matched list of employees.
+	 * @param endDate
+	 * @return
 	 */
 	public List<Employee> findEmployeesAfterEndDate(Date endDate);
 
