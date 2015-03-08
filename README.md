@@ -1,13 +1,13 @@
 # retail-crm
-It is the development branch of this porject, all changes should be commited on this branch at first
+It is the development branch of this project, all changes should be committed on this branch at first
 
 
 OS: Windows
 
-Java Enviroment: JRE 7
+Java Environment: JRE 7
 
 DataBase: Postgres 9.3 (pgAdmin)
- 
+
 WebServer: Tomcat 7
 
 Documentation Tool: Maven
@@ -33,7 +33,7 @@ Log --> n/a
 
 ======================================================================================================================
 Create DataBase:
-1. Install Postgres
+1. Download/Install Postgres http://www.postgresql.org/download/
 
 2. Create a new database with name "Test" in user "postgres". If you want give another database name or user name, don't forget change the spring configurations in all relevant module.
 for example:
@@ -51,7 +51,14 @@ port: 5432
 username: postgres
 password: bjy1986717
 
-4. run the sql scripts under the retail-crm-services/src/main/resources/sql
+4. for DB initialization.
+start db process master:
+pg_ctl -D "{db data directory}" -o "-p {port}" -l {logdirectory}/log start
+access the data base table:
+psql -p {port} {table name}
+
+Note: you need to create your schema in order to create the tables.
+run the sql scripts under the retail-crm-services/src/main/resources/sql
 for example
 4a: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/create_db.sql'
 4b: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/data/init_data.sql'
