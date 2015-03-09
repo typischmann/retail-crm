@@ -1,10 +1,4 @@
 # retail-crm
-<<<<<<< HEAD
-It is the development branch of this project, all changes should be committed on this branch at first
-=======
-<<<<<<< HEAD
-It is the development branch of this porject, all changes should be commited on this branch at first
->>>>>>> jianyu_dev_branch
 
 
 OS: Windows
