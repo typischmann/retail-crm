@@ -31,6 +31,8 @@ public class OrderDaoTest {
 		String departmentName = department.getName();
 		Assert.assertNotNull(departmentName);
 		Assert.assertTrue(order.getOrderItems().size()==1);
+		System.out.println(order.getOrderItems().get(0).getProduct().getProductName());
+		System.out.println(order.getOrderItems().get(0).getProduct().getProductCategory().getName());
 		//Assert.assertEquals(order.getOrderItems().get(0).getProduct());
 	}
 

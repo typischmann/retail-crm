@@ -237,56 +237,56 @@ alter sequence product_category_id_seq restart with 4;
 --Dumping the data for products
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10001, 1, '千金红', 'Qian Jin Hong', '千金红', 'QQS-BT-001', '2015-01-03');
+values(10001, 1, 1, '千金红', 'Qian Jin Hong', '千金红', 'QQS-BT-001', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10002, 1, '黄金绣球', 'Huang Jin Xiu Qiu', '黄金绣球', 'QQS-BT-002', '2015-01-03');
+values(10002, 2, 1, '黄金绣球', 'Huang Jin Xiu Qiu', '黄金绣球', 'QQS-BT-002', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10003, 1, '娜允天香', 'Na Yun Tian Xiang', '娜允天香', 'QQS-BT-003', '2015-01-03');
+values(10003, 3, 1, '娜允天香', 'Na Yun Tian Xiang', '娜允天香', 'QQS-BT-003', '2015-01-03');
 
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10004, 1, '千红', 'Qian Hong', '千红', 'QQS-BT-004', '2015-01-03');
+values(10004, 4, 1, '千红', 'Qian Hong', '千红', 'QQS-BT-004', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10005, 1, '蜜香金珠', 'Mi Xiang Jin Zhu', '蜜香金珠', 'QQS-BT-005', '2015-01-03');
+values(10005, 5, 1, '蜜香金珠', 'Mi Xiang Jin Zhu', '蜜香金珠', 'QQS-BT-005', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10006, 2, '精腴', 'Jing Yu', '精腴', 'QQS-PT-001', '2015-01-03');
+values(10006, 6, 2, '精腴', 'Jing Yu', '精腴', 'QQS-PT-001', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10007, 2, '涌泉', 'Yong Quan', '涌泉', 'QQS-PT-002', '2015-01-03');
+values(10007, 7, 2, '涌泉', 'Yong Quan', '涌泉', 'QQS-PT-002', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10008, 3, '思源', 'Si Yuan', '思源', 'QQS-PT-003', '2015-01-03');
+values(10008, 8, 3, '思源', 'Si Yuan', '思源', 'QQS-PT-003', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10009, 3, '精武', 'Jing Wu', '精武', 'QQS-PT-004', '2015-01-03');
+values(10009, 9, 3, '精武', 'Jing Wu', '精武', 'QQS-PT-004', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10010, 3, '志趣', 'Zhi Qu', '志趣', 'QQS-PT-005', '2015-01-03');
+values(10010, 10, 3, '志趣', 'Zhi Qu', '志趣', 'QQS-PT-005', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10011, 2, '物喜', 'Wu Xi', '物喜', 'QQS-PT-006', '2015-01-03');
+values(10011, 11, 2, '物喜', 'Wu Xi', '物喜', 'QQS-PT-006', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10012, 3, '大器', 'Da Qi', '大器', 'QQS-PT-007', '2015-01-03');
+values(10012, 12, 3, '大器', 'Da Qi', '大器', 'QQS-PT-007', '2015-01-03');
 
 insert into PRODUCT (ID, ACTIVE_PRICE_ID, PRODUCT_CATEGORY_ID, NAME, NAME_EN, FULL_NAME, 
 PRODUCT_INTERNAL_CODE, START_DATE)
-values(10013, 3, '格朗河帕沙', 'Ge Lang He Pa Sha', '格朗河帕沙', 'QQS-GT-001', '2015-01-03');
+values(10013, 13, 3, '格朗河帕沙', 'Ge Lang He Pa Sha', '格朗河帕沙', 'QQS-GT-001', '2015-01-03');
 
 alter sequence product_id_seq restart with 10014;
 

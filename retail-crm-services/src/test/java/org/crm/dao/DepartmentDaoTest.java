@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.crm.dao.model.DepartmentDao;
 import org.crm.entities.Department;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class DepartmentDaoTest {
 	@Autowired
 	private DepartmentDao departmentDao;
 	
+	@Ignore
 	@Test
 	public void findDepartmentByIdTest(){
 		Department dep=departmentDao.findDepartmentById( 7);
@@ -36,6 +38,7 @@ public class DepartmentDaoTest {
 		Assert.assertNull(dep.getParent().getParent());
 	}
 
+	@Ignore
 	@Test
 	public void findDepartmentsByNameTest(){
 		List<Department> deps=departmentDao.findDepartmentsByName("NAR");
