@@ -6,6 +6,7 @@ import org.crm.entities.Employee;
 import org.crm.entities.Warehouse;
 
 public interface WarehouseDao {
+
 	/**
 	 * 
 	 * @param id

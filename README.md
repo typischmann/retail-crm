@@ -1,4 +1,5 @@
 # retail-crm
+<<<<<<< HEAD
 It is the development branch of this porject, all changes should be commited on this branch at first
 
 
@@ -68,3 +69,7 @@ Port Configuration
 Web:8080
 Web Service:9090
 DataBase:5432 
+=======
+
+It is the main branch of this porject, it must be guaranteed to be runnable and stable in anytime
+>>>>>>> 31fadd4b5a4c751763596682d50ee6c8aa25d296
