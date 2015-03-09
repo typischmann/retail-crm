@@ -1,24 +1,28 @@
 # retail-crm
 <<<<<<< HEAD
+It is the development branch of this project, all changes should be committed on this branch at first
+=======
+<<<<<<< HEAD
 It is the development branch of this porject, all changes should be commited on this branch at first
+>>>>>>> jianyu_dev_branch
 
 
 OS: Windows
- 
-Java Enviroment: JRE 7
- 
+
+Java Environment: JRE 7
+
 DataBase: Postgres 9.3 (pgAdmin)
- 
+
 WebServer: Tomcat 7
- 
+
 Documentation Tool: Maven
- 
+
 IDE: Eclipse Version: Kepler Service Release 2 (Intellij?)
- 
+
 Version Controller: Git
- 
+
 Repository: Github
- 
+
 ================================================================================================================
 Using libraries and architecture:
 Standard Provider
@@ -31,11 +35,11 @@ Frontend --> Html5 Css Bootstrap, Angularjs UI, etc...
 MVC --> javascript Angularjs
 Test --> Unit Test JUnit
 Log --> n/a
- 
+
 ======================================================================================================================
 Create DataBase:
-1. Install Postgres
- 
+1. Download/Install Postgres http://www.postgresql.org/download/
+
 2. Create a new database with name "Test" in user "postgres". If you want give another database name or user name, don't forget change the spring configurations in all relevant module.
 for example:
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -47,29 +51,26 @@ for example:
 
 3.create a schema named "dbo" under Test 
 
-4. open the psql console
-it is only a example, you can give your configuration parameters which you have defined in the procedure of database installation.
-server: localhost
-database: Test
-port: 5432
-username: postgres
-password: bjy1986717
+4. for DB initialization.
+start db process master:
+pg_ctl -D "{db data directory}" -o "-p {port}" -l {logdirectory}/log start
+access the data base table:
+psql -p {port} {table name}
+
+Note: you need to create your schema in order to create the tables.
+run the sql scripts under the retail-crm-services/src/main/resources/sql
  
 5. run the sql scripts under the retail-crm-services/src/main/resources/sql
+
 for example
 5a: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/create_db.sql'
 5b: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/data/init_data.sql'
 for cleaning database you can user
 5c: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/drop_tables.sql'
  
- 
 ===============================================================================================================
 Port Configuration
- 
+
 Web:8080
 Web Service:9090
-DataBase:5432 
-=======
-
-It is the main branch of this porject, it must be guaranteed to be runnable and stable in anytime
->>>>>>> 31fadd4b5a4c751763596682d50ee6c8aa25d296
+DataBase:5432

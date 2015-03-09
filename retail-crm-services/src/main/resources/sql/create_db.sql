@@ -1,9 +1,9 @@
-/*
+﻿/*
  * for installing the table in Postgres Database can use the following command in the console
  * \i 'script_path'
  */
 
-set search_path to dbo;
+set search_path to schema;
 /*=========================================================================================================*/
 /* Table: ADDRESS                                               										   */
 /*=========================================================================================================*/
