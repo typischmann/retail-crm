@@ -32,4 +32,4 @@ username=postgres
 password=bjy1986717
 
 #query paramerter and data type
-weka_param_id=0
+weka_param_name=0

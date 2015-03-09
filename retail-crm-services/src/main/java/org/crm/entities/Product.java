@@ -11,88 +11,28 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="product")
-@NamedQueries({
-		@NamedQuery(name="findProductById", query="select p from Product p where p.productid = :productid"),
-		@NamedQuery(name="findProductByName", query="select p from Product p where p.productname = :productName")
-})
+@Table(name = "product")
+@NamedQueries({ @NamedQuery(name = Product.findProductByName, query = "select p from Product p where p.productName = :productName") })
+@XmlRootElement
 public class Product implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7858115141962844413L;
-	
+
+	public final static String findProductByName = "findProductByName";
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="product_seq")
-	@SequenceGenerator(name="product_seq", sequenceName="product_productid_seq",allocationSize=100)
-	@Column(name="productid")
-	private Long productid;
-	
-	@Column(name="productname")
-	private String productname;
-	
-	@Column(name="productgroupcode")
-	private String productgroupcode;
-	
-	@Column(name="productgroupname")
-	private String productgroupname;
-	
-	@Column(name="instockflag")
-	private String instockflag;
-	
-	@Column(name="fullprice")
-	private float fullprice;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
+	@SequenceGenerator(name = "product_seq", sequenceName = "product_id_seq")
+	@Column(name = "id")
+	private Integer id;
 
-	public Long getProductid() {
-		return productid;
-	}
-
-	public void setProductid(Long productid) {
-		this.productid = productid;
-	}
-
-	public String getProductname() {
-		return productname;
-	}
-
-	public void setProductname(String productname) {
-		this.productname = productname;
-	}
-
-	public String getProductgroupcode() {
-		return productgroupcode;
-	}
-
-	public void setProductgroupcode(String productgroupcode) {
-		this.productgroupcode = productgroupcode;
-	}
-
-	public String getProductgroupname() {
-		return productgroupname;
-	}
-
-	public void setProductgroupname(String productgroupname) {
-		this.productgroupname = productgroupname;
-	}
-
-	public String getInstockflag() {
-		return instockflag;
-	}
-
-	public void setInstockflag(String instockflag) {
-		this.instockflag = instockflag;
-	}
-
-	public float getFullprice() {
-		return fullprice;
-	}
-
-	public void setFullprice(float fullprice) {
-		this.fullprice = fullprice;
-	}		
-	
+	@Column(name = "name")
+	private String productName;
 
 }

@@ -24,6 +24,7 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.crm.entities.adapter.TimeStampAdapter;
 import org.crm.entities.converter.BooleanToYNConverter;
 
@@ -46,20 +47,23 @@ public class Order implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="order_seq")
-	@SequenceGenerator(name="order_seq", sequenceName="order_id_seq")
+	@SequenceGenerator(name="order_seq", sequenceName="orders_id_seq")
 	@Column(name="id")
 	private Integer Id;
 	
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="responsible_department_id")
+	@JoinColumn(name="RESPONSIBLE_DEPARTMENT_ID")
+	@JsonIgnore
 	private Department responsibleDepartment;
 	
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="responsible_employee_id")
+	@JsonIgnore
 	private Employee responsibleEmployee;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="parent_order_id", nullable=true)
+	@JsonIgnore
 	private Order parentOrder;
 	
 	@Convert(converter=BooleanToYNConverter.class)
@@ -71,6 +75,7 @@ public class Order implements Serializable {
 	private OrderType orderType;
 	
 	@OneToMany(mappedBy="parentOrder")
+	@JsonIgnore
 	private List<Order> subOrders;
 	
 	@Column(name="status")
@@ -88,8 +93,24 @@ public class Order implements Serializable {
 	@Column(name="delta_ts")
 	private Timestamp delta_ts;
 	
+	@OneToMany(mappedBy="parentOrder")
+	@JsonIgnore
+	private List<OrderItem> orderItems;
 	
 	
+	
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+
+
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+
+
 	public Integer getId() {
 		return Id;
 	}

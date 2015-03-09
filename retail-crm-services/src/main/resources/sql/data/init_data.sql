@@ -2,6 +2,8 @@
  * if encoding can not be recognized, the following command can be used
  * set client_encoding to 'UTF-8';
  */
+set client_encoding to 'UTF-8';
+
 insert into CITY values(1,	1, 'zz', 'ZHENZHOU', '0043');
 insert into CITY values(2,	1, 'kf', 'KAIFENG',  '0053');
 insert into CITY values(3,	1, 'LY', 'LUOYANG',  '0743');
@@ -66,9 +68,13 @@ insert into DEPARTMENT values(30, 'GCF', 'Global Customer Fullfillment', null, 4
 
 alter sequence department_id_seq restart with 31;
 
-insert into EMPLOYEE values(1,1);
+insert into EMPLOYEE (ID, DEPARTMENT_ID,FIRST_NAME,SECOND_NAME,START_DATE)
+values(1, 1, '敏玲', '范', '01-03-2015');
 
-alter sequence employee_id_seq restart with 2;
+insert into EMPLOYEE (ID, DEPARTMENT_ID,FIRST_NAME,SECOND_NAME,START_DATE)
+values(2, 1, '晓霞', '曾', '01-03-2015');
+
+alter sequence employee_id_seq restart with 3;
 
 insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE_EMPLOYEE_ID,
 ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
@@ -106,42 +112,42 @@ insert into ORDERS ( ID, RESPONSIBLE_DEPARTMENT_ID, PARENT_ORDER_ID, RESPONSIBLE
 ORDER_TYPE, IS_PAID, STATUS,IS_ROOT) 
 values(10000009, 1, 10000009, 1, 'SALE', 'Y', 1, 'Y');
 
-alter orders_id_seq restart with 10000010;
+alter sequence orders_id_seq restart with 10000010;
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000001, 10000001, 10003, 4);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000002, 10000002, 10005, 14);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000003, 10000003, 10005, 160);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000004, 10000003, 10002, 156);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000005, 10000004, 10005, 11);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000006, 10000005, 10005, 1);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000007, 10000006, 10005, 38);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000008, 10000006, 10002, 2);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000009, 10000006, 10005, 7);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000010, 10000008, 10005, 1);
 
-insert into ORDER_ITEMS (ID, SALE_ORDER_ID, PRODUCT_ID, AMOUNT)
+insert into ORDER_ITEMS (ID, ORDER_ID, PRODUCT_ID, AMOUNT)
 values(200000011, 10000009, 10003, 28);
 
-alter order_items_id_seq restart with 200000012;
+alter sequence order_items_id_seq restart with 200000012;
 
 
 insert into PRODUCT_PRICE(PRICE_TYPE_ID, PRODUCT_ID, CURRENCY_ID, PRICE_PERCENT, PRICE)

@@ -14,6 +14,9 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public class WarehouseDaoImpl extends AbstractGenericDaoImpl<Integer, Warehouse> implements WarehouseDao {
 
+	public WarehouseDaoImpl(){
+		super(Warehouse.class);
+	}
 	public Warehouse getWarehouseById(Integer id) {		
 		return this.find(id);
 	}

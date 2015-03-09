@@ -4,19 +4,25 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.transaction.Transactional;
 
 import org.crm.dao.model.AbstractGenericDao;
 
 @Transactional
-public abstract class AbstractGenericDaoImpl<PK extends Serializable, T extends Serializable> implements AbstractGenericDao<PK, T> {
-	
-	@PersistenceContext
+public class AbstractGenericDaoImpl<PK extends Serializable, T extends Serializable>
+		implements AbstractGenericDao<PK, T> {
+
+	@PersistenceContext(type = PersistenceContextType.EXTENDED)
 	protected EntityManager em;
-	
-	private Class<T> type;
-	
-	public T saveOrUpdate(T entity){
+
+	private Class<?> type;
+
+	protected AbstractGenericDaoImpl(Class<?> type) {
+		this.type = type;
+	}
+
+	public T saveOrUpdate(T entity) {
 		this.validate(entity);
 		return em.merge(entity);
 	}
@@ -32,22 +38,21 @@ public abstract class AbstractGenericDaoImpl<PK extends Serializable, T extends 
 	}
 
 	public T find(PK primaryKey) {
-		return em.find(type, primaryKey);
+		return (T) em.find(type, primaryKey);
 	}
-	
-	public void refresh(T entity){
+
+	public void refresh(T entity) {
 		em.refresh(entity);
 	}
-	
+
 	/**
 	 * 
 	 * @param entity
 	 */
-	protected void validate(final T entity){
-		if(entity==null){
+	protected void validate(final T entity) {
+		if (entity == null) {
 			throw new IllegalArgumentException("Entity is null");
 		}
 	}
-	
 
 }

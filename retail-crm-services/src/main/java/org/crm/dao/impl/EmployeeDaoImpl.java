@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.crm.dao.model.EmployeeDao;
+import org.crm.entities.Department;
 import org.crm.entities.Employee;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,11 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public class EmployeeDaoImpl extends AbstractGenericDaoImpl<Integer, Employee> implements
 		EmployeeDao {
-
+	
+	public EmployeeDaoImpl(){
+		super(Employee.class);
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
