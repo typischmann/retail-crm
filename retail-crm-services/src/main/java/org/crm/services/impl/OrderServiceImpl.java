@@ -18,6 +18,9 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderDao orderDao;
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Order createRootOrder(OrderType orderType, Employee employee) {
 		Order order = this.createOrder(orderType, employee);
 		order.setIs_root(true);
@@ -26,10 +29,16 @@ public class OrderServiceImpl implements OrderService {
 		return order;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Order updateOrSaveOrder(Order order) {
 		return orderDao.saveOrUpdate(order);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Order createSubOrderForParentOrder(Order parent, OrderType orderType,
 			Employee employee) {
 		Order order = this.createOrder(orderType, employee);
@@ -40,6 +49,9 @@ public class OrderServiceImpl implements OrderService {
 		return order;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void removeOrder(Order order) {
 		orderDao.remove(order.getId());
 	}
@@ -62,14 +74,23 @@ public class OrderServiceImpl implements OrderService {
 		return order;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Order findOrderById(Integer orderId) {
 		return orderDao.find(orderId);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public List<Order> findOrdersCreatedAfterStartDate(Timestamp startDate) {
 		return orderDao.findOrdersCreatedAfterStartDate(startDate);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public List<Order> findOrdersCreatedBetweenTimeInterval(
 			Timestamp startDate, Timestamp endDate) {
 		return orderDao.findOrdersCreatedBetweenTimeInterval(startDate, endDate);

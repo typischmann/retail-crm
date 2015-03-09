@@ -6,34 +6,34 @@ public interface AbstractGenericDao<PK extends Serializable, T extends Serializa
 	
 	/**
 	 * 
-	 * @param entity object which is saving or updating into the schema.
-	 * @return the saved or updated entity reference.
+	 * @param entity
+	 * @return
 	 */
 	public T saveOrUpdate(T entity);
 	
 	/**
 	 * 
-	 * @param entity object which is persisting into the schema.
-	 * @return the persisted entity reference.
+	 * @param entity
+	 * @return
 	 */
 	public T persist(T entity);
 	
 	/**
 	 * 
-	 * @param primaryKey the primary key of the generic schema.
+	 * @param primaryKey
 	 */
 	public void remove(PK primaryKey);
 	
 	/**
 	 * 
-	 * @param primaryKey the primary of the generic schema.
-	 * @return the entity which associated with the primary key, or null if not found.
+	 * @param primaryKey
+	 * @return
 	 */
 	public T find(PK primaryKey);
 	
 	/**
 	 * 
-	 * @param entity fetch the latest entity from storage..
+	 * @param entity
 	 */
 	public void refresh(T entity);
 }

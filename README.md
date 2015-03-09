@@ -1,5 +1,10 @@
 # retail-crm
+<<<<<<< HEAD
 It is the development branch of this project, all changes should be committed on this branch at first
+=======
+<<<<<<< HEAD
+It is the development branch of this porject, all changes should be commited on this branch at first
+>>>>>>> jianyu_dev_branch
 
 
 OS: Windows
@@ -43,13 +48,8 @@ for example:
 <property name="username" value="postgres"/> <!--Here,you should give another specified user name-->
 <property name="password" value="bjy1986717"/> <!--Here,you should give another specified password-->
 </bean>
-3. open the psql console
-it is only a example, you can give your configuration parameters which you have defined in the procedure of database installation.
-server: localhost
-database: Test
-port: 5432
-username: postgres
-password: bjy1986717
+
+3.create a schema named "dbo" under Test 
 
 4. for DB initialization.
 start db process master:
@@ -59,13 +59,15 @@ psql -p {port} {table name}
 
 Note: you need to create your schema in order to create the tables.
 run the sql scripts under the retail-crm-services/src/main/resources/sql
+ 
+5. run the sql scripts under the retail-crm-services/src/main/resources/sql
+
 for example
-4a: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/create_db.sql'
-4b: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/data/init_data.sql'
+5a: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/create_db.sql'
+5b: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/data/init_data.sql'
 for cleaning database you can user
-4c: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/drop_tables.sql'
-
-
+5c: \i 'D:/workspace/retail-crm/retail-crm-services/src/main/resources/sql/drop_tables.sql'
+ 
 ===============================================================================================================
 Port Configuration
 
