@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SecondaryTables;
@@ -21,7 +23,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "product")
 @NamedQueries({ @NamedQuery(name = Product.findProductByName, query = "select p from Product p where p.productName = :productName") })
-@SecondaryTables({ @SecondaryTable(name = "product_category", pkJoinColumns = { @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "product_category_id") }) })
 @XmlRootElement
 public class Product implements Serializable {
 
@@ -44,33 +45,65 @@ public class Product implements Serializable {
 	@Column(name = "product_internal_code")
 	private String productInternalCode;
 
-	@Embedded
+	
+	@ManyToOne
+	@JoinColumn(name="product_category_id", referencedColumnName="id")
 	private ProductCategory productCategory;
+	
+	
+	public Integer getId() {
+		return id;
+	}
 
-	@Embeddable
-	public class ProductCategory implements Serializable {
-		@Column(name = "id")
-		private Integer id;
 
-		@Column(name = "name")
-		private String name;
 
-		public Integer getId() {
-			return id;
-		}
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-		public String getName() {
-			return name;
-		}
 
-		public void setName(String name) {
-			this.name = name;
-		}
 
+
+	public String getProductName() {
+		return productName;
+	}
+
+
+
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+
+
+
+	public String getProductInternalCode() {
+		return productInternalCode;
+	}
+
+
+
+
+	public void setProductInternalCode(String productInternalCode) {
+		this.productInternalCode = productInternalCode;
+	}
+
+
+
+
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+
+
+
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
 	}
 
 }
+
+
