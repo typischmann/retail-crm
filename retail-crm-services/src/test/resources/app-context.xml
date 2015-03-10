@@ -12,9 +12,9 @@
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver"/>
-		<property name="url" value="jdbc:postgresql://localhost:12000/Test"/>
-		<property name="username" value="Dachuan Zhao"/>
-		<property name="password" value="zdc@1988"/>
+		<property name="url" value="jdbc:postgresql://localhost:5432/Test"/>
+		<property name="username" value="postgres"/>
+		<property name="password" value="bjy1986717"/>
 	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

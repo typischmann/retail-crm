@@ -1,4 +1,4 @@
-package org.crm.dao;
+package org.crm.dao.impl;
 
 
 

@@ -1,4 +1,4 @@
-package org.crm.dao;
+package org.crm.dao.impl;
 
 import javax.transaction.Transactional;
 
@@ -33,6 +33,8 @@ public class OrderDaoTest {
 		Assert.assertTrue(order.getOrderItems().size()==1);
 		System.out.println(order.getOrderItems().get(0).getProduct().getProductName());
 		System.out.println(order.getOrderItems().get(0).getProduct().getProductCategory().getName());
+		System.out.println(order.getOrderItems().get(0).getProduct().getProductCategory().getName());
+		System.out.println(order.getOrderItems().get(0).getPrice().getPriceValue());
 		//Assert.assertEquals(order.getOrderItems().get(0).getProduct());
 	}
 
