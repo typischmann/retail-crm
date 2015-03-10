@@ -17,29 +17,16 @@ public class WarehouseDaoImpl extends AbstractGenericDaoImpl<Integer, Warehouse>
 	public WarehouseDaoImpl(){
 		super(Warehouse.class);
 	}
-
-    /**
-     * @param id unique id of ware house.
-     * @return ware house object.
-     */
-	public Warehouse getWarehouseById(int id) {
+	public Warehouse getWarehouseById(Integer id) {		
 		return this.find(id);
 	}
 
-    /**
-     * @param manager manager charger of the ware house.
-     * @return list of ware houses.
-     */
 	public List<Warehouse> getWarehouseByManager(Employee manager) {
 		TypedQuery<Warehouse> query=em.createNamedQuery(Warehouse.findWarehouseByManager, Warehouse.class);
 		query.setParameter("manager_id", manager.getId());
 		return query.getResultList();
 	}
 
-    /**
-     * @param name ware house name.
-     * @return list of matching ware houses.
-     */
 	public Warehouse getWarehouseByName(String name) {
 		TypedQuery<Warehouse> query=em.createNamedQuery(Warehouse.findWarehouseByName, Warehouse.class);
 		query.setParameter("name", name);
