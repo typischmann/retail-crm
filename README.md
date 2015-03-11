@@ -19,16 +19,25 @@ Repository: Github
 
 ================================================================================================================
 Using libraries and architecture:
-Standard Provider
-Container --> Spring framework
-Java Bean(Object) Mapping --> Dozer(?)
-Web Service --> JAX-RS Jersey
-Persistence --> JPA Hibernate
-DataBase --> Ansi SQL(pg/Sql) Postgres
-Frontend --> Html5 Css Bootstrap, Angularjs UI, etc...
-MVC --> javascript Angularjs
-Test --> Unit Test JUnit
-Log --> n/a
+                                         Standard              Provider
+
+Container                    -->                               Spring framework
+
+Java Bean(Object) Mapping    -->                               Dozer(?)
+
+Web Service                  -->         JAX-RS                Jersey
+
+Persistence                  -->         JPA                   Hibernate
+
+DataBase                     -->         Ansi SQL(pg/Sql)      Postgres
+
+Frontend                     -->                               Html5 Css Bootstrap, Angularjs UI, etc...
+
+MVC                          -->         javascript            Angularjs
+
+Test                         -->         Unit Test             JUnit
+
+Log                          -->         n/a
 
 ======================================================================================================================
 Create DataBase:
