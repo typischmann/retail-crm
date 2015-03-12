@@ -1,5 +1,6 @@
 package org.crm.dao.impl;
 
+import org.crm.dao.model.EmployeeDao;
 import org.crm.entities.Employee;
 import org.crm.util.JsonSerializer;
 import org.junit.Before;
@@ -21,7 +22,7 @@ import static org.junit.Assert.*;
 public class EmployeeDaoImplTest {
 
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
 
     @Test
     public void findEmployeeByFullNameShould()
