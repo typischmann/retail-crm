@@ -24,9 +24,10 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.crm.entities.adapter.TimeStampAdapter;
 import org.crm.entities.converter.BooleanToYNConverter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Orders")
