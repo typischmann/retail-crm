@@ -27,6 +27,20 @@ public interface EmployeeService {
 
     /**
      *
+     * @param secondName second name
+     * @return the matching employees.
+     */
+    List<Employee> findEmployeesBySecondNameAndSortedByFirstName(String secondName);
+
+    /**
+     *
+     * @param firstName fristName;
+     * @return the matching employees;
+     */
+    List<Employee> findEmployeesByFirstNameAndSortedBySecondName(String firstName);
+
+    /**
+     *
      * @param startDate the time after the employee was hired.
      * @return the list employees.
      */

@@ -3,6 +3,8 @@ package org.crm.services.impl;
 import org.crm.dao.model.EmployeeDao;
 import org.crm.entities.Employee;
 import org.crm.services.api.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
@@ -10,14 +12,11 @@ import java.util.List;
 /**
  * Created by Dachuan Zhao on 2015/3/12.
  */
+@Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService
 {
-    private final EmployeeDao employeeDao;
-
-    public EmployeeServiceImpl(final EmployeeDao employeeDao)
-    {
-        this.employeeDao = employeeDao;
-    }
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Override
     public List<Employee> findAllEmployeesSortedByName() {
@@ -27,6 +26,24 @@ public class EmployeeServiceImpl implements EmployeeService
     @Override
     public List<Employee> findEmployeesByFullName(String firstName, String secondName) {
         return employeeDao.findEmployeesByFullName(firstName, secondName);
+    }
+
+    /**
+     * @param secondName second name
+     * @return the matching employees.
+     */
+    @Override
+    public List<Employee> findEmployeesBySecondNameAndSortedByFirstName(String secondName) {
+        return employeeDao.findEmployeesBySecondNameAndSortedByFirstName(secondName);
+    }
+
+    /**
+     * @param firstName fristName;
+     * @return the matching employees;
+     */
+    @Override
+    public List<Employee> findEmployeesByFirstNameAndSortedBySecondName(String firstName) {
+        return employeeDao.findEmployeesByFirstNameAndSortedBySecondName(firstName);
     }
 
     @Override
