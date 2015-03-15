@@ -44,6 +44,10 @@ public class OrderItem implements Serializable {
 
 	@Column(name = "amount")
 	private Integer amount;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="price_id", referencedColumnName="id")
+	private Price price;
 
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
 	@Column(name = "delta_ts")
@@ -79,6 +83,16 @@ public class OrderItem implements Serializable {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
+	}
+	
+	
+
+	public Price getPrice() {
+		return price;
+	}
+
+	public void setPrice(Price price) {
+		this.price = price;
 	}
 
 	public Timestamp getDelta_ts() {

@@ -16,6 +16,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="department")
@@ -23,6 +27,7 @@ import javax.persistence.Table;
 	@NamedQuery(name=Department.findDepartmentById, query="select d from Department d where d.id=:id"),
 	@NamedQuery(name=Department.findDepartmentsByName, query="select d from Department d where d.name=:name"),
 	@NamedQuery(name=Department.findSubDepartmentsByParentId, query="select d from Department d where d.parent.id=:id")})
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Department implements Serializable{
 	
 	/**
@@ -55,7 +60,15 @@ public class Department implements Serializable{
 	private List<Department> subDepartments;
 	
 	@OneToMany(mappedBy="department")
-	private List<Employee> emloyees;
+	private List<Employee> employees;
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
 
 	public Integer getId() {
 		return id;

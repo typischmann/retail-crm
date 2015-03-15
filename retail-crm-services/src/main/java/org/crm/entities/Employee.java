@@ -18,6 +18,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
 @Entity
 @Table(name="employee")
 @NamedQueries({
@@ -35,7 +41,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 				query="select e from Employee e where e.endDate >= :endDate")
 })
 @XmlRootElement
-public class Employee implements Serializable{
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+public class Employee implements Serializable{ 
 	
 	/**
 	 * 
@@ -68,7 +75,7 @@ public class Employee implements Serializable{
 	@Column(name="end_date")
 	private Date endDate;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="department_id")
 	private Department department;
 
