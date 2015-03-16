@@ -6,6 +6,7 @@ import org.crm.entities.Department;
 import org.crm.entities.Employee;
 import org.crm.entities.Order;
 import org.crm.entities.Order.OrderType;
+import org.crm.webservices.entity.OrderInfo;
 
 public interface OrderWebService {
 	

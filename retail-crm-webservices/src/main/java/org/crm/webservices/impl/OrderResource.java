@@ -16,6 +16,8 @@ import org.crm.entities.Order;
 import org.crm.entities.Order.OrderType;
 import org.crm.services.api.OrderService;
 import org.crm.webservices.api.OrderWebService;
+import org.crm.webservices.entity.OrderInfo;
+import org.crm.webservices.mapping.ExtendedDozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,12 +28,18 @@ public class OrderResource implements OrderWebService{
 	@Autowired
 	private OrderService orderService;	
 	
+	@Autowired
+	private ExtendedDozerBeanMapper orderDataMapper;
+	
 	@GET
 	@Path("ById/{Id}")
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Order findOrderById(@PathParam("Id") Integer orderId){
 		Order order = orderService.findOrderById(orderId);
+		OrderInfo orderInfo = orderDataMapper.map(order, OrderInfo.class);
+		
+		//return orderInfo;
 		return order;
 	}
 	

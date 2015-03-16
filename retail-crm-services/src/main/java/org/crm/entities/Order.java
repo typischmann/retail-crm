@@ -30,225 +30,178 @@ import org.crm.entities.converter.BooleanToYNConverter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Orders")
-@NamedQueries({	@NamedQuery(name=Order.findAllOrdersByDepartment,query="select o from Order o where o.responsibleDepartment.id=:department_id"),
-				@NamedQuery(name=Order.findAllOrdersByEmployee,query="select o from Order o where o.responsibleEmployee.id=:employee_id"),
-				@NamedQuery(name=Order.findOrdersCreatedAfterStartDate, query="select o from Order o where o.create_ts > :startDate"),
-				@NamedQuery(name=Order.findOrdersCreatedBetweenTimeInterval, query="select o from Order o where o.create_ts > :startDate and o.create_ts <= :endDate")})
+@Table(name = "Orders")
+@NamedQueries({
+		@NamedQuery(name = Order.findAllOrdersByDepartment, query = "select o from Order o where o.responsibleDepartment.id=:department_id"),
+		@NamedQuery(name = Order.findAllOrdersByEmployee, query = "select o from Order o where o.responsibleEmployee.id=:employee_id"),
+		@NamedQuery(name = Order.findOrdersCreatedAfterStartDate, query = "select o from Order o where o.create_ts > :startDate"),
+		@NamedQuery(name = Order.findOrdersCreatedBetweenTimeInterval, query = "select o from Order o where o.create_ts > :startDate and o.create_ts <= :endDate") })
 @XmlRootElement
 public class Order implements Serializable {
-	
-	public static final String findAllOrdersByDepartment="findAllOrdersByDepartment";
-	
-	public static final String findAllOrdersByEmployee="findAllOrdersByEmployee";	
-	
-	public static final String findOrdersCreatedAfterStartDate="findOrdersAfterStartDate";
-	
-	public static final String findOrdersCreatedBetweenTimeInterval="findOrdersCreatedBetweenTimeInterval";
+
+	public static final String findAllOrdersByDepartment = "findAllOrdersByDepartment";
+
+	public static final String findAllOrdersByEmployee = "findAllOrdersByEmployee";
+
+	public static final String findOrdersCreatedAfterStartDate = "findOrdersAfterStartDate";
+
+	public static final String findOrdersCreatedBetweenTimeInterval = "findOrdersCreatedBetweenTimeInterval";
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="order_seq")
-	@SequenceGenerator(name="order_seq", sequenceName="orders_id_seq")
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
+	@SequenceGenerator(name = "order_seq", sequenceName = "orders_id_seq")
+	@Column(name = "id")
 	private Integer Id;
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="RESPONSIBLE_DEPARTMENT_ID")
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "RESPONSIBLE_DEPARTMENT_ID")
 	@JsonIgnore
 	private Department responsibleDepartment;
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="responsible_employee_id")
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "responsible_employee_id")
 	@JsonIgnore
 	private Employee responsibleEmployee;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="parent_order_id", nullable=true)
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "parent_order_id", nullable = true)
 	@JsonIgnore
 	private Order parentOrder;
-	
-	@Convert(converter=BooleanToYNConverter.class)
-	@Column(name="is_paid", nullable=false)
+
+	@Convert(converter = BooleanToYNConverter.class)
+	@Column(name = "is_paid", nullable = false)
 	private boolean is_paid;
 
-	@Enumerated(value=EnumType.STRING)
-	@Column(name="order_type")
+	@Enumerated(value = EnumType.STRING)
+	@Column(name = "order_type")
 	private OrderType orderType;
-	
-	@OneToMany(mappedBy="parentOrder")
+
+	@OneToMany(mappedBy = "parentOrder")
 	@JsonIgnore
 	private List<Order> subOrders;
-	
-	@Column(name="status")
-	private Integer status;
-	
-	@Convert(converter=BooleanToYNConverter.class)
-	@Column(name="is_root", nullable=false)
+
+	@Enumerated(value=EnumType.ORDINAL)
+	@Column(name = "status")
+	private OrderStatus orderStatus;
+
+	@Convert(converter = BooleanToYNConverter.class)
+	@Column(name = "is_root", nullable = false)
 	private boolean is_root;
-	
+
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
-	@Column(name="create_ts")
+	@Column(name = "create_ts")
 	private Timestamp create_ts;
-	
+
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
-	@Column(name="delta_ts")
+	@Column(name = "delta_ts")
 	private Timestamp delta_ts;
-	
-	@OneToMany(mappedBy="parentOrder")
+
+	@OneToMany(mappedBy = "parentOrder")
 	@JsonIgnore
 	private List<OrderItem> orderItems;
-	
-	
-	
+
 	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
-
-
 
 	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 
-
-
 	public Integer getId() {
 		return Id;
 	}
-
-
 
 	public void setId(Integer id) {
 		Id = id;
 	}
 
-
-
 	public Department getResponsibleDepartment() {
 		return responsibleDepartment;
 	}
-
-
 
 	public void setResponsibleDepartment(Department responsibleDepartment) {
 		this.responsibleDepartment = responsibleDepartment;
 	}
 
-
-
 	public Employee getResponsibleEmployee() {
 		return responsibleEmployee;
 	}
-
-
 
 	public void setResponsibleEmployee(Employee responsibleEmployee) {
 		this.responsibleEmployee = responsibleEmployee;
 	}
 
-
-
 	public boolean isIs_paid() {
 		return is_paid;
 	}
-
-
 
 	public void setIs_paid(boolean is_paid) {
 		this.is_paid = is_paid;
 	}
 
-
-
 	public OrderType getOrderType() {
 		return orderType;
 	}
-
-
 
 	public void setOrderType(OrderType orderType) {
 		this.orderType = orderType;
 	}
 
-
-
-	public Integer getStatus() {
-		return status;
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
 	}
 
-
-
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
 	}
-
-
 
 	public Timestamp getCreate_ts() {
 		return create_ts;
 	}
 
-
-
 	public void setCreate_ts(Timestamp create_ts) {
 		this.create_ts = create_ts;
 	}
-
-
 
 	public Timestamp getDelta_ts() {
 		return delta_ts;
 	}
 
-
-
 	public void setDelta_ts(Timestamp delta_ts) {
 		this.delta_ts = delta_ts;
 	}
 
-	
 	public Order getParentOrder() {
 		return parentOrder;
 	}
-
-
 
 	public void setParentOrder(Order parentOrder) {
 		this.parentOrder = parentOrder;
 	}
 
-
-
 	public List<Order> getSubOrders() {
 		return subOrders;
 	}
-
-
 
 	public void setSubOrders(List<Order> subOrders) {
 		this.subOrders = subOrders;
 	}
 
-
-
 	public boolean isIs_root() {
 		return is_root;
 	}
-
-
 
 	public void setIs_root(boolean is_root) {
 		this.is_root = is_root;
 	}
 
-
-	public enum OrderType{
-		PURCHASE,
-		SALE,
-		TRANSPORT		
+	public enum OrderType {
+		PURCHASE, SALE, TRANSPORT
 	}
-	
-	
-	
-}
 
+	public enum OrderStatus {
+		CREATED, EXECUTED, CANCELLED
+	}
+
+}

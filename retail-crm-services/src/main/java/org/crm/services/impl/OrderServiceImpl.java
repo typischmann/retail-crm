@@ -7,6 +7,7 @@ import java.util.List;
 import org.crm.dao.model.OrderDao;
 import org.crm.entities.Employee;
 import org.crm.entities.Order;
+import org.crm.entities.Order.OrderStatus;
 import org.crm.entities.Order.OrderType;
 import org.crm.services.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,7 @@ public class OrderServiceImpl implements OrderService {
 		order.setResponsibleDepartment(employee.getDepartment());
 		order.setResponsibleEmployee(employee);
 		order.setIs_paid(false);
-		order.setStatus(0);
+		order.setOrderStatus(OrderStatus.CREATED);
 		order.setCreate_ts(new Timestamp(new Date().getTime()));
 		order.setDelta_ts(new Timestamp(new Date().getTime()));
 		return order;

@@ -2,6 +2,9 @@ package org.crm.webservices.entity;
 
 import java.sql.Timestamp;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class OrderInfo {
 	
 	private Integer Id;
@@ -12,7 +15,7 @@ public class OrderInfo {
 
 	private String orderType;
 	
-	private Integer status;
+	private Integer orderStatus;
 
 	private boolean isRoot;
 	
@@ -49,13 +52,13 @@ public class OrderInfo {
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
 	}
-
-	public Integer getStatus() {
-		return status;
+	
+	public Integer getOrderStatus() {
+		return orderStatus;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setOrderStatus(Integer orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	public boolean isRoot() {
