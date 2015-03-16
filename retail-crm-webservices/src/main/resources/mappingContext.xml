@@ -5,7 +5,7 @@
 							   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 	<bean id="orderDataMapper"
-		class="org.crm.webservices.mapping.ExtendedDozerBeanMapper">
+		class="org.crm.webservices.mapping.ExtendedDozerBeanMapper" scope="singleton">
 		<property name="mappingFiles">
 			<list>
 				<value>mappingConfig/orderDataMapping.xml</value>

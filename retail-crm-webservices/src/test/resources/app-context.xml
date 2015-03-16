@@ -44,7 +44,7 @@
 		</property>
 	</bean>
 	
-	<import resource="mappingContext.xml"/>
+	<import resource="classpath:mappingContext.xml"/>
 
 
 	<context:component-scan base-package="org.crm" />
