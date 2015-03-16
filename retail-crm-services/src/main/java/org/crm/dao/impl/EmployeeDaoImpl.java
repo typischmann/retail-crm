@@ -49,14 +49,25 @@ public class EmployeeDaoImpl extends AbstractGenericDaoImpl<Integer, Employee> i
 		return query.getResultList();
 	}
 
-	/**
+    /**
+     * @param firstName firstName.
+     * @return the matching employees.
+     */
+    @Override
+    public List<Employee> findEmployeesByFirstNameAndSortedBySecondName(String firstName) {
+        TypedQuery<Employee> query=em.createNamedQuery(Employee.findEmployeesByFirstNameAndSortedBySecondName, Employee.class);
+        query.setParameter("firstName", firstName);
+        return query.getResultList();
+    }
+
+    /**
 	 * {@inheritDoc}
 	 */
 	public List<Employee> findEmployeesBetweenDurationAndSortedByName(
 			Date startDate, Date endDate) {
 		TypedQuery<Employee> query=em.createNamedQuery(Employee.findEmployeesBetweenDurationAndSortedByName, Employee.class);
 		query.setParameter("startDate", startDate);
-		query.setParameter("endName", endDate);
+        query.setParameter("endDate", endDate);
 		return query.getResultList();
 	}
 
@@ -74,7 +85,7 @@ public class EmployeeDaoImpl extends AbstractGenericDaoImpl<Integer, Employee> i
 	 */
 	public List<Employee> findEmployeesAfterEndDate(Date endDate) {
 		TypedQuery<Employee> query=em.createNamedQuery(Employee.findEmployeesAfterEndDate, Employee.class);
-		query.setParameter("endName", endDate);
+		query.setParameter("endDate", endDate);
 		return query.getResultList();
 	}
 	

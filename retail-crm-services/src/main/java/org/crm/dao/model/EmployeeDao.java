@@ -23,10 +23,17 @@ public interface EmployeeDao {
 	
 	/**
 	 * 
-	 * @param secondName
-	 * @return
+	 * @param secondName secondName.
+	 * @return the matching employees.
 	 */
 	public List<Employee> findEmployeesBySecondNameAndSortedByFirstName(String secondName);
+
+    /**
+     *
+     * @param firstName firstName.
+     * @return the matching employees.
+     */
+    public List<Employee> findEmployeesByFirstNameAndSortedBySecondName(String firstName);
 	
 	/**
 	 * 
