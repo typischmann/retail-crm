@@ -6,6 +6,7 @@ import java.util.List;
 import org.crm.entities.Employee;
 import org.crm.entities.Order;
 import org.crm.entities.Order.OrderType;
+import org.crm.entities.OrderItem;
 
 public interface OrderService {
 	/**
@@ -59,5 +60,20 @@ public interface OrderService {
 	 * @return
 	 */
 	public List<Order> findOrdersCreatedBetweenTimeInterval(Timestamp startDate, Timestamp endDate);
+	
+	/**
+	 * 
+	 * @param orderId
+	 * @return
+	 */
+	public Order addOrderItemByOrderId(Integer orderId, OrderItem orderItem);
+
+	/**
+	 * 
+	 * @param orderId
+	 * @param orderItemId
+	 * @return
+	 */
+	public Order deleteOrderItemByOrderId(Integer orderId, Integer orderItemId);
 
 }

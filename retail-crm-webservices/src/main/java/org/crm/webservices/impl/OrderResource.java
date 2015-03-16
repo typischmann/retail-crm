@@ -35,38 +35,38 @@ public class OrderResource implements OrderWebService{
 	@Path("ById/{Id}")
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public Order findOrderById(@PathParam("Id") Integer orderId){
+	public OrderInfo findOrderById(@PathParam("Id") Integer orderId){
 		Order order = orderService.findOrderById(orderId);
 		OrderInfo orderInfo = orderDataMapper.map(order, OrderInfo.class);
-		
-		//return orderInfo;
-		return order;
+		return orderInfo;
 	}
 	
 	
-	@GET
-	@Path("ByEmloyee")
-	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public List<Order> findAllOrdersByEmployee(Employee employee) {
-		
-		return null;
-	}
-
-	@GET
-	@Path("ByDepartment")
-	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public List<Order> findAllOrdersByDepartment(Department department) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Order createRootOrder(OrderType orderType, Employee employee) {
 		return orderService.createRootOrder(orderType, employee);
+	}
+
+
+
+
+	@Override
+	public List<Order> findAllOrdersByEmployee(Employee employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	@Override
+	public List<Order> findAllOrdersByDepartment(Department department) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -9,6 +9,7 @@ import org.crm.entities.Employee;
 import org.crm.entities.Order;
 import org.crm.entities.Order.OrderStatus;
 import org.crm.entities.Order.OrderType;
+import org.crm.entities.OrderItem;
 import org.crm.services.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -95,6 +96,28 @@ public class OrderServiceImpl implements OrderService {
 	public List<Order> findOrdersCreatedBetweenTimeInterval(
 			Timestamp startDate, Timestamp endDate) {
 		return orderDao.findOrdersCreatedBetweenTimeInterval(startDate, endDate);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Order addOrderItemByOrderId(Integer orderId, OrderItem orderItem) {
+		Order order = orderDao.find(orderId);
+		order.getOrderItems().add(orderItem);
+		return orderDao.saveOrUpdate(order);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Order deleteOrderItemByOrderId(Integer orderId, Integer orderItemId) {
+		Order order = orderDao.find(orderId);
+		for(OrderItem item : order.getOrderItems()){
+			if(item.getId()==orderItemId){
+				order.getOrderItems().remove(item);
+			}
+		}
+		return orderDao.saveOrUpdate(order);
 	}
 
 }

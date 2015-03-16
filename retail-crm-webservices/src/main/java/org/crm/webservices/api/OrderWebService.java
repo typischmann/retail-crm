@@ -10,7 +10,7 @@ import org.crm.webservices.entity.OrderInfo;
 
 public interface OrderWebService {
 	
-	public Order findOrderById(Integer orderId);
+	public OrderInfo findOrderById(Integer orderId);
 	
 	public List<Order> findAllOrdersByEmployee(Employee employee);
 	
