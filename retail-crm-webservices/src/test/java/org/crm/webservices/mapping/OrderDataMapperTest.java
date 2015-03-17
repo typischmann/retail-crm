@@ -4,7 +4,7 @@ import javax.transaction.Transactional;
 
 import org.crm.dao.model.OrderDao;
 import org.crm.entities.Order;
-import org.crm.webservices.entity.OrderInfo;
+import org.crm.webservices.dto.OrderInfoDto;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,10 +28,11 @@ public class OrderDataMapperTest {
 		Order order = orderDao.find(10000001);
 		Assert.assertNotNull(order);
 
-		OrderInfo orderInfo = orderDataMapper.map(order,OrderInfo.class);
+		OrderInfoDto orderInfo = orderDataMapper.map(order,OrderInfoDto.class);
 		Assert.assertTrue(orderInfo.getId()==order.getId());
 		Assert.assertTrue(orderInfo.getParentOrderId()==order.getParentOrder().getId());
 		System.out.println(orderInfo.getOrderType());
+		System.out.println(orderInfo.getCreateTs().getTime());
 	}
 
 }

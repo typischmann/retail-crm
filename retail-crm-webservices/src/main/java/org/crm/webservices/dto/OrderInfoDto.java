@@ -1,25 +1,27 @@
-package org.crm.webservices.entity;
+package org.crm.webservices.dto;
 
 import java.sql.Timestamp;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class OrderInfo {
+public class OrderInfoDto {
 	
 	private Integer Id;
 	
 	private Integer parentOrderId;
 	
-	private boolean isPaid;
+	private boolean paid;
 
 	private String orderType;
 	
-	private Integer orderStatus;
+	private String orderStatus;
 
-	private boolean isRoot;
+	private boolean root;
 	
 	private Timestamp createTs;
+	
+	private Timestamp deltaTs;
 
 	public Integer getId() {
 		return Id;
@@ -38,11 +40,11 @@ public class OrderInfo {
 	}
 
 	public boolean isPaid() {
-		return isPaid;
+		return paid;
 	}
 
-	public void setPaid(boolean isPaid) {
-		this.isPaid = isPaid;
+	public void setPaid(boolean paid) {
+		this.paid = paid;
 	}
 
 	public String getOrderType() {
@@ -53,20 +55,20 @@ public class OrderInfo {
 		this.orderType = orderType;
 	}
 	
-	public Integer getOrderStatus() {
+	public String getOrderStatus() {
 		return orderStatus;
 	}
 
-	public void setOrderStatus(Integer orderStatus) {
+	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 
 	public boolean isRoot() {
-		return isRoot;
+		return root;
 	}
 
-	public void setRoot(boolean isRoot) {
-		this.isRoot = isRoot;
+	public void setRoot(boolean root) {
+		this.root = root;
 	}
 
 	public Timestamp getCreateTs() {
@@ -76,6 +78,13 @@ public class OrderInfo {
 	public void setCreateTs(Timestamp createTs) {
 		this.createTs = createTs;
 	}
-	
+
+	public Timestamp getDeltaTs() {
+		return deltaTs;
+	}
+
+	public void setDeltaTs(Timestamp deltaTs) {
+		this.deltaTs = deltaTs;
+	}	
 
 }

@@ -3,7 +3,7 @@
 http://dozer.sourceforge.net/schema/beanmapping.xsd">
 	<mapping type="one-way">
 		<class-a>org.crm.entities.Order</class-a>
-		<class-b>org.crm.webservices.entity.OrderInfo</class-b>
+		<class-b>org.crm.webservices.dto.OrderInfoDto</class-b>
 		<field>
 			<a>id</a>
 			<b>id</b>
@@ -14,7 +14,7 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 		</field>
 		<field>
 			<a>is_paid</a>
-			<b is-accessible="true">isPaid</b>
+			<b is-accessible="true">paid</b>
 		</field>
 		<field>
 			<a>orderStatus</a>
@@ -22,11 +22,15 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 		</field>
 		<field>
 			<a>is_root</a>
-			<b is-accessible="true">isRoot</b>
+			<b is-accessible="true">root</b>
 		</field>
 		<field>
 			<a>create_ts</a>
-			<b>createTs</b>
+			<b is-accessible="true">createTs</b>
+		</field>
+		<field>
+			<a>delta_ts</a>
+			<b is-accessible="true">deltaTs</b>
 		</field>
 	</mapping>
 </mappings>
