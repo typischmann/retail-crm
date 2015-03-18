@@ -75,5 +75,12 @@ public interface OrderService {
 	 * @return
 	 */
 	public Order deleteOrderItemByOrderId(Integer orderId, Integer orderItemId);
+	
+	/**
+	 * 
+	 * @param order
+	 * @return
+	 */
+	public Order updateOrder(Order order);
 
 }

@@ -23,6 +23,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Order createRootOrder(OrderType orderType, Employee employee) {
 		Order order = this.createOrder(orderType, employee);
 		order.setIs_root(true);
@@ -34,6 +35,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Order updateOrSaveOrder(Order order) {
 		return orderDao.saveOrUpdate(order);
 	}
@@ -41,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Order createSubOrderForParentOrder(Order parent, OrderType orderType,
 			Employee employee) {
 		Order order = this.createOrder(orderType, employee);
@@ -54,6 +57,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void removeOrder(Order order) {
 		orderDao.remove(order.getId());
 	}
@@ -79,6 +83,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Order findOrderById(Integer orderId) {
 		return orderDao.find(orderId);
 	}
@@ -86,6 +91,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<Order> findOrdersCreatedAfterStartDate(Timestamp startDate) {
 		return orderDao.findOrdersCreatedAfterStartDate(startDate);
 	}
@@ -93,6 +99,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<Order> findOrdersCreatedBetweenTimeInterval(
 			Timestamp startDate, Timestamp endDate) {
 		return orderDao.findOrdersCreatedBetweenTimeInterval(startDate, endDate);
@@ -101,6 +108,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Order addOrderItemByOrderId(Integer orderId, OrderItem orderItem) {
 		Order order = orderDao.find(orderId);
 		order.getOrderItems().add(orderItem);
@@ -110,6 +118,7 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Order deleteOrderItemByOrderId(Integer orderId, Integer orderItemId) {
 		Order order = orderDao.find(orderId);
 		for(OrderItem item : order.getOrderItems()){
@@ -120,4 +129,13 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.saveOrUpdate(order);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Order updateOrder(Order order) {
+		return orderDao.saveOrUpdate(order);
+	}
+
+	
 }
