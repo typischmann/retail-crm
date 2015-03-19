@@ -1,7 +1,7 @@
 <mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://dozer.sourceforge.net
 http://dozer.sourceforge.net/schema/beanmapping.xsd">
-	<mapping type="one-way">
+	<mapping>
 		<class-a>org.crm.entities.Order</class-a>
 		<class-b>org.crm.webservices.dto.OrderInfoDto</class-b>
 		<field>

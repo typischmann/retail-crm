@@ -8,7 +8,9 @@ import javax.persistence.PersistenceContextType;
 import javax.transaction.Transactional;
 
 import org.crm.dao.model.AbstractGenericDao;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
+@TransactionConfiguration(transactionManager="transactionManager",defaultRollback = false)
 @Transactional
 public class AbstractGenericDaoImpl<PK extends Serializable, T extends Serializable>
 		implements AbstractGenericDao<PK, T> {

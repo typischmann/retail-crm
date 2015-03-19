@@ -20,5 +20,6 @@ public interface OrderWebService {
 	public Order createRootOrder(OrderType orderType, Employee employee);
 
 	public List<OrderInfoDto> findOrdersByTimeInterval(Long start, Long end);
-
+	
+	public OrderInfoDto updateOrderByDto(OrderInfoDto orderInfoDto);
 }

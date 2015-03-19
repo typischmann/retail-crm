@@ -34,5 +34,20 @@ public class OrderDataMapperTest {
 		System.out.println(orderInfo.getOrderType());
 		System.out.println(orderInfo.getCreateTs().getTime());
 	}
+	
+	@Test
+	public void MappingOrderInfoDtoBackToOrderTest(){
+		Order order = orderDao.find(10000001);
+		Assert.assertNotNull(order);
+
+		OrderInfoDto orderInfoDto = orderDataMapper.map(order,OrderInfoDto.class);
+		Assert.assertTrue(orderInfoDto.getId()==order.getId());
+		Assert.assertTrue(orderInfoDto.getParentOrderId()==order.getParentOrder().getId());
+		Assert.assertTrue(order.isIs_paid());
+		orderInfoDto.setPaid(false);
+		orderDataMapper.map(orderInfoDto, order);
+		Assert.assertFalse(order.isIs_paid());
+		
+	}
 
 }

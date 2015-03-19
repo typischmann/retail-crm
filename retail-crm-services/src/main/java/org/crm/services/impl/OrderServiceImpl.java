@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.crm.dao.model.OrderDao;
 import org.crm.entities.Employee;
 import org.crm.entities.Order;
@@ -13,8 +15,11 @@ import org.crm.entities.OrderItem;
 import org.crm.services.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 @Service("orderService")
+@TransactionConfiguration(transactionManager="transactionManager",defaultRollback = false)
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
 	@Autowired
@@ -128,14 +133,6 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return orderDao.saveOrUpdate(order);
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Order updateOrder(Order order) {
-		return orderDao.saveOrUpdate(order);
-	}
-
+	
 	
 }

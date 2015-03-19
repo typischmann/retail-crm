@@ -3,9 +3,11 @@ package org.crm.webservices.impl;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -87,6 +89,20 @@ public class OrderResource implements OrderWebService{
 		List<OrderInfoDto> orderInfoDtos=orderDataMapper.map(orders, OrderInfoDto.class);
 		return orderInfoDtos;
 	}
+
+
+	@Override
+	@PUT
+	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public OrderInfoDto updateOrderByDto(OrderInfoDto orderInfoDto) {
+		Order order = orderService.findOrderById(orderInfoDto.getId());
+		orderDataMapper.map(orderInfoDto, order);
+		orderService.updateOrSaveOrder(order);
+		order = orderService.findOrderById(orderInfoDto.getId());
+		return orderDataMapper.map(order, OrderInfoDto.class);
+	}
+	
 	
 	
 
