@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 @Service("orderService")
-@TransactionConfiguration(transactionManager="transactionManager",defaultRollback = false)
 @Transactional
 public class OrderServiceImpl implements OrderService {
 

@@ -20,8 +20,9 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
-
-
+	
+    <tx:annotation-driven transaction-manager ="transactionManager" />
+	
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -40,11 +41,19 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.default_schema">dbo</prop>
 				<prop key="hibernate.jdbc.lob.non_contextual_creation">true</prop>
+				<prop key="hibernate.transaction.flush_before_completion">true</prop>
+				<prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.SunOneJtaPlatform
+				</prop>
 			</props>
 		</property>
 	</bean>
-	
-	<import resource="classpath:mappingContext.xml"/>
+
+	<bean id="em"
+		class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+		<property name="entityManagerFactory" ref="emf" />
+	</bean>
+
+	<import resource="classpath:mappingContext.xml" />
 
 
 	<context:component-scan base-package="org.crm" />

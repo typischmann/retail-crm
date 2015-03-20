@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 @Repository("orderDao")
-@TransactionConfiguration(transactionManager="transactionManager",defaultRollback = false)
 @Transactional
 public class OrderDaoImpl extends AbstractGenericDaoImpl<Integer, Order> implements OrderDao {
 
