@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.crm.entities.OrderItem;
 
-public interface OrderItemDao {
+public interface OrderItemDao extends AbstractGenericDao<Integer, OrderItem> {
 	
 	/**
 	 * 

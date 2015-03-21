@@ -2,8 +2,8 @@ package org.crm.dao.model;
 
 import org.crm.entities.Product;
 
-public interface ProductDao {
-	
+public interface ProductDao extends AbstractGenericDao<Integer, Product> {
+
 	/**
 	 * 
 	 * @param productName

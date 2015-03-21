@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Order updateOrSaveOrder(Order order) {
+	public Order saveOrUpdateOrder(Order order) {
 		return orderDao.saveOrUpdate(order);
 	}
 
@@ -113,7 +113,7 @@ public class OrderServiceImpl implements OrderService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Order addOrderItemByOrderId(Integer orderId, OrderItem orderItem) {
+	public Order saveOrUpdateOrderItemByOrderId(Integer orderId, OrderItem orderItem) {
 		Order order = orderDao.find(orderId);
 		order.getOrderItems().add(orderItem);
 		return orderDao.saveOrUpdate(order);

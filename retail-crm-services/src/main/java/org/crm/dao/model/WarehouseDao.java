@@ -5,7 +5,7 @@ import java.util.List;
 import org.crm.entities.Employee;
 import org.crm.entities.Warehouse;
 
-public interface WarehouseDao {
+public interface WarehouseDao extends AbstractGenericDao<Integer, Warehouse> {
 
 	/**
 	 * 

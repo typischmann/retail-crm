@@ -3,6 +3,7 @@ package org.crm.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -59,7 +61,7 @@ public class Department implements Serializable{
 	@OneToMany(mappedBy="parent")
 	private List<Department> subDepartments;
 	
-	@OneToMany(mappedBy="department")
+	@OneToMany(mappedBy="department",cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
 	private List<Employee> employees;
 
 	public List<Employee> getEmployees() {

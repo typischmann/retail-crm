@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -76,7 +77,7 @@ public class Order implements Serializable {
 	@Column(name = "order_type")
 	private OrderType orderType;
 
-	@OneToMany(mappedBy = "parentOrder")
+	@OneToMany(mappedBy = "parentOrder", cascade={CascadeType.ALL})
 	@JsonIgnore
 	private List<Order> subOrders;
 
@@ -96,7 +97,7 @@ public class Order implements Serializable {
 	@Column(name = "delta_ts")
 	private Timestamp delta_ts;
 
-	@OneToMany(mappedBy = "parentOrder")
+	@OneToMany(mappedBy = "parentOrder", cascade={CascadeType.ALL})
 	@JsonIgnore
 	private List<OrderItem> orderItems;
 

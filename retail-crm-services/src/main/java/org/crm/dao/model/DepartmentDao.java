@@ -4,22 +4,22 @@ import java.util.List;
 
 import org.crm.entities.Department;
 
-public interface DepartmentDao {
-	
+public interface DepartmentDao extends AbstractGenericDao<Integer, Department> {
+
 	/**
 	 * 
 	 * @param id
 	 * @return
 	 */
 	public Department findDepartmentById(Integer id);
-	
+
 	/**
 	 * 
 	 * @param name
 	 * @return
 	 */
 	public List<Department> findDepartmentsByName(String name);
-	
+
 	/**
 	 * 
 	 * @param id

@@ -98,7 +98,7 @@ public class OrderResource implements OrderWebService{
 	public OrderInfoDto updateOrderByDto(OrderInfoDto orderInfoDto) {
 		Order order = orderService.findOrderById(orderInfoDto.getId());
 		orderDataMapper.map(orderInfoDto, order);
-		orderService.updateOrSaveOrder(order);
+		orderService.saveOrUpdateOrder(order);
 		order = orderService.findOrderById(orderInfoDto.getId());
 		return orderDataMapper.map(order, OrderInfoDto.class);
 	}

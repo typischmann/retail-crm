@@ -22,7 +22,7 @@ public interface OrderService {
 	 * @param order
 	 * @return
 	 */
-	public Order updateOrSaveOrder(Order order);
+	public Order saveOrUpdateOrder(Order order);
 	
 	/**
 	 * 
@@ -66,7 +66,7 @@ public interface OrderService {
 	 * @param orderId
 	 * @return
 	 */
-	public Order addOrderItemByOrderId(Integer orderId, OrderItem orderItem);
+	public Order saveOrUpdateOrderItemByOrderId(Integer orderId, OrderItem orderItem);
 
 	/**
 	 * 

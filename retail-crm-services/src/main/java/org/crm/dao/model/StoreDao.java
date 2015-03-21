@@ -3,7 +3,7 @@ package org.crm.dao.model;
 import org.crm.entities.Employee;
 import org.crm.entities.Store;
 
-public interface StoreDao {
+public interface StoreDao extends AbstractGenericDao<Integer, Store> {
 	/**
 	 * 
 	 * @param id
