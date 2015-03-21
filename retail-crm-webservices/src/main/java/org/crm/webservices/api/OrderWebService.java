@@ -1,6 +1,5 @@
 package org.crm.webservices.api;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.crm.entities.Department;

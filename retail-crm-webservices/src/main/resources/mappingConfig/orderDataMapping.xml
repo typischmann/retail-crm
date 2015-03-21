@@ -33,4 +33,29 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 			<b is-accessible="true">deltaTs</b>
 		</field>
 	</mapping>
+	
+	<mapping>
+		<class-a>org.crm.entities.OrderItem</class-a>
+		<class-b>org.crm.webservices.dto.OrderItemInfoDto</class-b>
+		<field>
+			<a>id</a>
+			<b>id</b>
+		</field>
+		<field>
+			<a>product.productName</a>
+			<b>productName</b>
+		</field>
+		<field>
+			<a>product.productCategory.name</a>
+			<b>productCategoryName</b>
+		</field>
+		<field>
+			<a>price.priceValue</a>
+			<b>priceValue</b>
+		</field>
+		<field>
+			<a>amount</a>
+			<b>amount</b>
+		</field>
+	</mapping>
 </mappings>

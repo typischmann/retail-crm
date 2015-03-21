@@ -1,5 +1,6 @@
 package org.crm.entities;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -9,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,14 +28,14 @@ public class Price {
 	private Product product;
 	
 	@Column(name="price_percent")
-	private double pricePercent;
+	private BigDecimal pricePercent;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="currency_id",referencedColumnName="id")
 	private Currency currency;
 	
 	@Column(name="price")
-	private double priceValue;
+	private BigDecimal priceValue;
 	
 	@Column(name="start_date")
 	private Date startDate;
@@ -70,11 +70,11 @@ public class Price {
 		this.product = product;
 	}
 
-	public double getPricePercent() {
+	public BigDecimal getPricePercent() {
 		return pricePercent;
 	}
 
-	public void setPricePercent(double pricePercent) {
+	public void setPricePercent(BigDecimal pricePercent) {
 		this.pricePercent = pricePercent;
 	}
 
@@ -86,11 +86,11 @@ public class Price {
 		this.currency = currency;
 	}
 
-	public double getPriceValue() {
+	public BigDecimal getPriceValue() {
 		return priceValue;
 	}
 
-	public void setPriceValue(double priceValue) {
+	public void setPriceValue(BigDecimal priceValue) {
 		this.priceValue = priceValue;
 	}
 

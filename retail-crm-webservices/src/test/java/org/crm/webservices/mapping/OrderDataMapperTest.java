@@ -3,8 +3,11 @@ package org.crm.webservices.mapping;
 import javax.transaction.Transactional;
 
 import org.crm.dao.model.OrderDao;
+import org.crm.dao.model.OrderItemDao;
 import org.crm.entities.Order;
+import org.crm.entities.OrderItem;
 import org.crm.webservices.dto.OrderInfoDto;
+import org.crm.webservices.dto.OrderItemInfoDto;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,10 +24,13 @@ public class OrderDataMapperTest {
 	private OrderDao orderDao;
 	
 	@Autowired
+	private OrderItemDao orderItemDao;
+	
+	@Autowired
 	private ExtendedDozerBeanMapper orderDataMapper;
 	
 	@Test
-	public void findOrderByIdTest(){
+	public void mappingOrderByIdTest(){
 		Order order = orderDao.find(10000001);
 		Assert.assertNotNull(order);
 
@@ -36,7 +42,7 @@ public class OrderDataMapperTest {
 	}
 	
 	@Test
-	public void MappingOrderInfoDtoBackToOrderTest(){
+	public void mappingOrderInfoDtoBackToOrderTest(){
 		Order order = orderDao.find(10000001);
 		Assert.assertNotNull(order);
 
@@ -48,6 +54,17 @@ public class OrderDataMapperTest {
 		orderDataMapper.map(orderInfoDto, order);
 		Assert.assertFalse(order.isIs_paid());
 		
+	}
+	
+	@Test
+	public void mappingOrderItemByIdTest(){
+		OrderItem orderItem = orderItemDao.find(200000001);
+		Assert.assertNotNull(orderItem);
+		
+		OrderItemInfoDto orderItemInfoDto=orderDataMapper.map(orderItem, OrderItemInfoDto.class);
+		Assert.assertNotNull(orderItemInfoDto);
+		Assert.assertTrue(orderItemInfoDto.getId()==orderItem.getId());
+		Assert.assertTrue(orderItemInfoDto.getProductName()==orderItem.getProduct().getProductName());
 	}
 
 }
