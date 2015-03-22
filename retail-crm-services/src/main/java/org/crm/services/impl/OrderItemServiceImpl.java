@@ -43,6 +43,17 @@ public class OrderItemServiceImpl implements OrderItemService {
 		List<OrderItem> items = order.getOrderItems();
 		return items;
 	}
+
+	@Override
+	//TODO: Test for persist/merge cascade between order and order item
+	public OrderItem addOrderItemByOrderId(OrderItem orderItem, Integer orderId) {
+		Order order = orderDao.find(orderId);
+		orderItem.setParentOrder(order);
+		orderItemDao.persist(orderItem);
+		order.getOrderItems().add(orderItem);
+		orderDao.saveOrUpdate(order);
+		return orderItem;
+	}
 	
 	
 }

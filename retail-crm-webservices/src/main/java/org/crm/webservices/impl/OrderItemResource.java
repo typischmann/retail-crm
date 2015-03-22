@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -11,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.crm.entities.OrderItem;
 import org.crm.services.api.OrderItemService;
+import org.crm.services.api.OrderService;
 import org.crm.webservices.api.OrderItemWebService;
 import org.crm.webservices.dto.OrderItemInfoDto;
 import org.crm.webservices.mapping.ExtendedDozerBeanMapper;
@@ -26,6 +29,9 @@ public class OrderItemResource implements OrderItemWebService {
 	
 	@Autowired
 	private OrderItemService orderItemService;
+	
+	@Autowired
+	private OrderService orderService;
 
 	@Override
 	@GET
@@ -39,17 +45,21 @@ public class OrderItemResource implements OrderItemWebService {
 	}
 
 	@Override
+	@POST
+	@Path("AddByOrderId")
 	public void addOrderItemByOrderId(OrderItemInfoDto orderItemInfoDto,
 			Integer orderId) {
-		// TODO Auto-generated method stub
-		
+		OrderItem orderItem=orderDataMapper.map(orderItemInfoDto, OrderItem.class);
+		orderItemService.addOrderItemByOrderId(orderItem, orderId);		
 	}
 
 	@Override
-	public void updateOrderItemByOrderId(OrderItemInfoDto orderItemInfoDto,
-			Integer orderId) {
-		// TODO Auto-generated method stub
-		
+	@PUT
+	@Path("Update")
+	public void updateOrderItem(OrderItemInfoDto orderItemInfoDto) {
+		OrderItem orderItem = orderItemService.findOrderItemById(orderItemInfoDto.getId());
+		orderDataMapper.map(orderItemInfoDto, orderItem);
+		orderItemService.saveOrUpdateOrderItem(orderItem);		
 	}
 
 }

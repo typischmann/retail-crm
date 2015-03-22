@@ -143,12 +143,12 @@ constraint PK_PRODUCT_TRANSPORT_RECORDS primary key (ID)
 /* Table: ITEMS_IN_WAREHOUSE	                                 										   */
 /*=========================================================================================================*/
 create table ITEMS_IN_WAREHOUSE (
-ID                   INTEGER                        not null,
-PRODUCT_ID           INTEGER                        not null,
-WAREHOUSE_ID    	 INTEGER                        not null,
-AMOUNT               NUMERIC(15,2)                  not null,
-TOTAL_PRICE_ID	 	 INTEGER						not null,
-DELTA_TS			 TIMESTAMP						default current_timestamp,
+ID                   			INTEGER                        not null,
+PRODUCT_ID           			INTEGER                        not null,
+WAREHOUSE_ID    	 			INTEGER                        not null,
+AMOUNT               			NUMERIC(15,2)                  not null,
+INVENTORY_RECORD_ID			 	INTEGER						   not null,
+DELTA_TS			 			TIMESTAMP					   default current_timestamp,
 constraint PK_ITEMS_IN_WAREHOUSE primary key (ID)
 );
 
@@ -345,7 +345,22 @@ DEPARTMENT_ID			integer							not null,
 NAME 				 	varchar(100),
 NAME_EN 			 	varchar(100),
 MANAGER_EMPLOYEE_ID  	integer,
+WAREHOUSE_TYPE			integer,						-- 0 Normal Storage 1 Cold Storage
 DELTA_TS			 	timestamp						default current_timestamp,
 constraint PK_WAREHOUSE primary key (ID)
 );
+
+/*=========================================================================================================*/
+/* Table: INVENTORY_CHANGE_RECORDS providing a mapping between departments and order items to record	   */
+/* the changes for inventory		   																	   */
+/*=========================================================================================================*/
+create table INVENTORY_CHANGE_RECORDS (
+ID                   	SERIAL,
+DEPARMENT_ID			integer							not null,
+ORDER_ITEM_ID  			integer,
+CHANGE_TYPE				integer,						-- 0 income 1 outcome
+DELTA_TS			 	timestamp						default current_timestamp,
+constraint PK_INVENTORY_CHANGE_RECORDS primary key (ID)
+);
+
 

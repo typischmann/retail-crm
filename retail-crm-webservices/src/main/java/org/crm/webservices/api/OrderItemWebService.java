@@ -15,6 +15,6 @@ public interface OrderItemWebService {
 	
 	public void addOrderItemByOrderId(OrderItemInfoDto orderItemInfoDto,Integer orderId);
 	
-	public void updateOrderItemByOrderId(OrderItemInfoDto orderItemInfoDto,Integer orderId);
+	public void updateOrderItem(OrderItemInfoDto orderItemInfoDto);
 
 }

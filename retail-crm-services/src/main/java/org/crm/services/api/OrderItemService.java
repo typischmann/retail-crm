@@ -32,4 +32,12 @@ public interface OrderItemService {
 	 * @param orderItem
 	 */
 	public void removeOrderItem(OrderItem orderItem);
+	
+	/**
+	 * 
+	 * @param orderItem
+	 * @param orderId
+	 * @return
+	 */
+	public OrderItem addOrderItemByOrderId(OrderItem orderItem, Integer orderId);
 }
