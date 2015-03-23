@@ -15,9 +15,11 @@ drop table DEPARTMENT;
 
 drop table DEPARTMENT_TYPE;
 
-drop table ITEMS_IN_STORE;
+drop table INVENTORY_CURRENT_ITEMS;
 
-drop table ITEMS_IN_WAREHOUSE;
+drop table INVENTORY_CHANGE_RECORDS;
+
+drop table INVENTORY_PERIOD_OVERVIEW;
 
 drop table LOCATION;
 
@@ -36,8 +38,6 @@ drop table PRODUCT;
 drop table PRODUCT_CATEGORY;
 
 drop table PRODUCT_PRICE;
-
-drop table PRODUCT_TRANSPORT_RECORDS;
 
 drop table STATE;
 

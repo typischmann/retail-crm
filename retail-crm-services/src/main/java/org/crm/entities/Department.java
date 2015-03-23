@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,50 +20,56 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.crm.entities.Order.OrderStatus;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name="department")
+@Table(name = "department")
 @NamedQueries({
-	@NamedQuery(name=Department.findDepartmentById, query="select d from Department d where d.id=:id"),
-	@NamedQuery(name=Department.findDepartmentsByName, query="select d from Department d where d.name=:name"),
-	@NamedQuery(name=Department.findSubDepartmentsByParentId, query="select d from Department d where d.parent.id=:id")})
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Department implements Serializable{
-	
+		@NamedQuery(name = Department.findDepartmentById, query = "select d from Department d where d.id=:id"),
+		@NamedQuery(name = Department.findDepartmentsByName, query = "select d from Department d where d.name=:name"),
+		@NamedQuery(name = Department.findSubDepartmentsByParentId, query = "select d from Department d where d.parent.id=:id") })
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Department implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7074669646491706699L;
-	
-	static final public String findDepartmentById="findDepartmentById";
-	static final public String findDepartmentsByName="findDepartmentsByName";
-	static final public String findSubDepartmentsByParentId="findSubDepartmentsByParentId";
-	
-	
+
+	static final public String findDepartmentById = "findDepartmentById";
+	static final public String findDepartmentsByName = "findDepartmentsByName";
+	static final public String findSubDepartmentsByParentId = "findSubDepartmentsByParentId";
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="department_seq")
-	@SequenceGenerator(name="department_seq", sequenceName="department_id_seq")
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "department_seq")
+	@SequenceGenerator(name = "department_seq", sequenceName = "department_id_seq")
+	@Column(name = "id")
 	private Integer id;
 
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-	
-	@Column(name="name_en")
+
+	@Column(name = "name_en")
 	private String name_en;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="parent_department_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "parent_department_id")
 	private Department parent;
-	
-	@OneToMany(mappedBy="parent")
+
+	@Enumerated(value = EnumType.ORDINAL)
+	@Column(name = "department_type_id")
+	private DepartmentType departmentType;
+
+	@OneToMany(mappedBy = "parent")
 	private List<Department> subDepartments;
-	
-	@OneToMany(mappedBy="department",cascade={CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
+
+	@OneToMany(mappedBy = "department", cascade = { CascadeType.PERSIST,
+			CascadeType.REFRESH, CascadeType.MERGE })
 	private List<Employee> employees;
 
 	public List<Employee> getEmployees() {
@@ -110,5 +118,9 @@ public class Department implements Serializable{
 
 	public void setSubDepartments(List<Department> subDepartments) {
 		this.subDepartments = subDepartments;
-	}	
+	}
+
+	public enum DepartmentType {
+		UNDEFINED, DIRECTOR_BORDING, BUSINESS_UNIT, TEAM, STORE, WAREHOUSE
+	}
 }

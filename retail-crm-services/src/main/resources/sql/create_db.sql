@@ -110,47 +110,48 @@ DELTA_TS			 TIMESTAMP 			default current_timestamp,
 constraint PK_EMPLOYEE primary key (ID)
 );
 
-/*=========================================================================================================*/
-/* Table: ITEMS_IN_STORE                                   										   */
-/*=========================================================================================================*/
-create table ITEMS_IN_STORE(
-ID                   	INTEGER                        	not null,
-PRODUCT_ID           	INTEGER                        	not null,
-STORE_ID    	 		INTEGER                       	not null,
-AMOUNT               	NUMERIC(15,2)                  	not null,
-TOTAL_PRICE_ID	 	 	INTEGER							not null,
-DELTA_TS			 	TIMESTAMP						default current_timestamp,
-constraint PK_ITEMS_IN_STORE primary key (ID)
-);
 
 /*=========================================================================================================*/
-/* Table: PRODUCT_TRANSPORT_RECORDS				Delivery records among internal departments				   */
+/* Table: INVENTORY_CURRENT_ITEMS	This table stores the current inventory in real time				   */
 /*=========================================================================================================*/
-create table PRODUCT_TRANSPORT_RECORDS(
-ID                   				SERIAL			not null,
-INCOME_DEPARTMENT_ID  	 		 	integer,
-OUTCOME_DEPARTMENT_ID		 	 	integer,
-INTERNAL_ORDER_ID      				integer		    not null,
-DELIVERY_COST		 				numeric(15,2),
-OUTCOME_DATE		 				timestamp,
-INCOME_DATE			 				timestamp,
-DELTA_TS			 				timestamp		default current_timestamp,
-constraint PK_PRODUCT_TRANSPORT_RECORDS primary key (ID)
-);
-
-
-/*=========================================================================================================*/
-/* Table: ITEMS_IN_WAREHOUSE	                                 										   */
-/*=========================================================================================================*/
-create table ITEMS_IN_WAREHOUSE (
-ID                   			INTEGER                        not null,
+create table INVENTORY_CURRENT_ITEMS (
+ID                   			SERIAL,
 PRODUCT_ID           			INTEGER                        not null,
-WAREHOUSE_ID    	 			INTEGER                        not null,
+DEPARTMENT_ID    	 			INTEGER                        not null,--refering to store or warehouse
 AMOUNT               			NUMERIC(15,2)                  not null,
-INVENTORY_RECORD_ID			 	INTEGER						   not null,
-DELTA_TS			 			TIMESTAMP					   default current_timestamp,
-constraint PK_ITEMS_IN_WAREHOUSE primary key (ID)
+INVENTORY_RECORD_ID			 	INTEGER						   not null, --refering to the change which causes the current inventory from last one
+CREATE_TS			 			TIMESTAMP					   default current_timestamp,
+constraint PK_INVENTORY_CURRENT_ITEMS primary key (ID)
 );
+
+/*=========================================================================================================*/
+/* Table: INVENTORY_CHANGE_RECORDS providing a mapping between departments and order items to record	   */
+/* the changes for inventory		   																	   */
+/*=========================================================================================================*/
+create table INVENTORY_CHANGE_RECORDS (
+ID                   	SERIAL,
+DEPARMENT_ID			integer							not null,
+ORDER_ITEM_ID  			integer,
+AMOUNT_VALUE			integer,
+CHANGE_TYPE				integer,						-- 0 income 1 outcome
+CHANGE_STATUS			integer,						-- 0 begin 1 finished 2 cancelled
+DELTA_TS			 	timestamp						default current_timestamp,
+constraint PK_INVENTORY_CHANGE_RECORDS primary key (ID)
+);
+
+/*=========================================================================================================*/
+/* Table: INVENTORY_PERIOD_OVERVIEW providing a periodically overview for the inventory					   */
+/* a database job will be used to calculate it periodically												   */
+/*=========================================================================================================*/
+create table INVENTORY_PERIOD_OVERVIEW (
+ID                   	SERIAL,
+DEPARMENT_ID			integer							not null,
+PERIOD_TYPE				integer,						-- 0 daily 1 monthly 2 yearly
+TOTAL_AMOUNT			integer,
+DELTA_TS			 	timestamp						default current_timestamp,
+constraint PK_INVENTORY_PERIOD_OVERVIEW primary key (ID)
+);
+
 
 
 /*=========================================================================================================*/
@@ -350,17 +351,5 @@ DELTA_TS			 	timestamp						default current_timestamp,
 constraint PK_WAREHOUSE primary key (ID)
 );
 
-/*=========================================================================================================*/
-/* Table: INVENTORY_CHANGE_RECORDS providing a mapping between departments and order items to record	   */
-/* the changes for inventory		   																	   */
-/*=========================================================================================================*/
-create table INVENTORY_CHANGE_RECORDS (
-ID                   	SERIAL,
-DEPARMENT_ID			integer							not null,
-ORDER_ITEM_ID  			integer,
-CHANGE_TYPE				integer,						-- 0 income 1 outcome
-DELTA_TS			 	timestamp						default current_timestamp,
-constraint PK_INVENTORY_CHANGE_RECORDS primary key (ID)
-);
 
 

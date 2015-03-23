@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -56,6 +57,10 @@ public class Warehouse implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="manager_employee_id")
 	private Employee manager;
+	
+	@OneToOne
+	@JoinColumn(name="department_id")
+	private Department department;
 	
 	
 	@Column(name="delta_ts")

@@ -198,11 +198,11 @@ public class Order implements Serializable {
 	}
 
 	public enum OrderType {
-		PURCHASE, SALE, TRANSPORT
+		UNDEFINED, SALE, PURCHASE, TRANSPORT
 	}
 
 	public enum OrderStatus {
-		CREATED, EXECUTED, CANCELLED
+		UNDEFINED, CREATED, EXECUTED, CANCELLED
 	}
 
 }
