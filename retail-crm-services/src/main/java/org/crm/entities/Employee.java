@@ -2,9 +2,14 @@ package org.crm.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.crm.entities.adapter.SqlDateAdapter;
+import org.crm.entities.adapter.TimeStampAdapter;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -28,8 +33,9 @@ import java.sql.Timestamp;
         @NamedQuery(name = Employee.findEmployeesAfterEndDate,
                 query = "select e from Employee e where e.endDate >= :endDate")
 })
-@XmlRootElement
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Employee implements Serializable {
 
     /**
@@ -58,9 +64,11 @@ public class Employee implements Serializable {
     @Column(name = "second_name")
     private String secondName;
 
+    @XmlJavaTypeAdapter(value = SqlDateAdapter.class)
     @Column(name = "start_date")
     private Date startDate;
 
+    @XmlJavaTypeAdapter(value = SqlDateAdapter.class)
     @Column(name = "end_date")
     private Date endDate;
 
@@ -71,6 +79,7 @@ public class Employee implements Serializable {
     @Column(name = "note")
     private String note;
 
+    @XmlJavaTypeAdapter(value = TimeStampAdapter.class)
     @Column(name = "delta_ts", columnDefinition = "default current_timestamp")
     private Timestamp delta_ts;
 

@@ -1,10 +1,16 @@
 package org.crm.webservices.dto;
 
+import org.crm.entities.adapter.TimeStampAdapter;
+
 import java.sql.Timestamp;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class OrderInfoDto {
 	
 	private Integer Id;
@@ -18,9 +24,9 @@ public class OrderInfoDto {
 	private String orderStatus;
 
 	private boolean root;
-	
+    @XmlJavaTypeAdapter(value = TimeStampAdapter.class)
 	private Timestamp createTs;
-	
+    @XmlJavaTypeAdapter(value = TimeStampAdapter.class)
 	private Timestamp deltaTs;
 
 	public Integer getId() {
