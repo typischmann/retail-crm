@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import weka.core.Instances;
 import weka.experiment.InstanceQuery;
 
-@Repository("genericWekaDao")
+//@Repository("genericWekaDao")
 public class GenericWekaDaoImpl extends InstanceQuery implements GenericWekaDao {	
 	
 	private Instances instances;
