@@ -1,0 +1,1 @@
+var crmApp = angular.module('crmApp', ['ui.bootstrap']);
