@@ -18,7 +18,7 @@ import java.util.List;
  * Employee component.
  */
 @Component
-@Path("_resources")
+@Path("_employee_resources")
 public class EmployeeResource implements EmployeeWebService {
 
     @Autowired

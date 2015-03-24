@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order createRootOrder(OrderType orderType, Employee employee) {
 		Order order = this.createOrder(orderType, employee);
-		order.setIs_root(true);
+		order.setRoot(true);
 		order.setParentOrder(null);
 		this.orderDao.persist(order);
 		return order;
@@ -51,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
 	public Order createSubOrderForParentOrder(Order parent, OrderType orderType,
 			Employee employee) {
 		Order order = this.createOrder(orderType, employee);
-		order.setIs_root(false);
+		order.setRoot(false);
 		order.setParentOrder(parent);
 		parent.getSubOrders().add(order);
 		orderDao.persist(order);
@@ -77,10 +77,10 @@ public class OrderServiceImpl implements OrderService {
 		order.setOrderType(orderType);
 		order.setResponsibleDepartment(employee.getDepartment());
 		order.setResponsibleEmployee(employee);
-		order.setIs_paid(false);
+		order.setPaid(false);
 		order.setOrderStatus(OrderStatus.CREATED);
-		order.setCreate_ts(new Timestamp(new Date().getTime()));
-		order.setDelta_ts(new Timestamp(new Date().getTime()));
+		order.setCreateTs(new Timestamp(new Date().getTime()));
+		order.setDeltaTs(new Timestamp(new Date().getTime()));
 		return order;
 	}
 

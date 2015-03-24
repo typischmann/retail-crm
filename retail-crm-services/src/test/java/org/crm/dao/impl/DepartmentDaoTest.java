@@ -29,11 +29,11 @@ public class DepartmentDaoTest {
 	public void findDepartmentByIdTest(){
 		Department dep=departmentDao.findDepartmentById( 7);
 		Assert.assertEquals(dep.getName(), "NAR");
-		Assert.assertEquals(dep.getName_en(), "North America Retail");
+		Assert.assertEquals(dep.getNameEn(), "North America Retail");
 		
 		Assert.assertTrue(dep.getParent().getId()==1);
 		Assert.assertEquals(dep.getParent().getName(), "CEO");
-		Assert.assertEquals(dep.getParent().getName_en(), "Chief Executing Officer");		
+		Assert.assertEquals(dep.getParent().getNameEn(), "Chief Executing Officer");		
 		Assert.assertTrue(dep.getParent().getSubDepartments().size()==10);
 		Assert.assertNull(dep.getParent().getParent());
 	}
@@ -46,11 +46,11 @@ public class DepartmentDaoTest {
 		
 		Department dep=deps.get(0);
 		Assert.assertTrue(dep.getId()==7);
-		Assert.assertEquals(dep.getName_en(), "North America Retail");
+		Assert.assertEquals(dep.getNameEn(), "North America Retail");
 		
 		Assert.assertTrue(dep.getParent().getId()==1);
 		Assert.assertEquals(dep.getParent().getName(), "CEO");
-		Assert.assertEquals(dep.getParent().getName_en(), "Chief Executing Officer");		
+		Assert.assertEquals(dep.getParent().getNameEn(), "Chief Executing Officer");		
 		Assert.assertTrue(dep.getParent().getSubDepartments().size()==10);
 		Assert.assertNull(dep.getParent().getParent());
 	}

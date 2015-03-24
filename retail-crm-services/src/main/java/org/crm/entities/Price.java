@@ -44,7 +44,7 @@ public class Price {
 	private Date endDate;
 	
 	@Column(name="delta_ts")
-	private Timestamp delta_ts;
+	private Timestamp deltaTs;
 
 	public Integer getId() {
 		return id;
@@ -110,12 +110,12 @@ public class Price {
 		this.endDate = endDate;
 	}
 
-	public Timestamp getDelta_ts() {
-		return delta_ts;
+	public Timestamp getDeltaTs() {
+		return deltaTs;
 	}
 
-	public void setDelta_ts(Timestamp delta_ts) {
-		this.delta_ts = delta_ts;
+	public void setDelta_ts(Timestamp deltaTs) {
+		this.deltaTs = deltaTs;
 	} 
 	
 	

@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("_resources")
+@Path("_order_item_resources")
 public class OrderItemResource implements OrderItemWebService {
 	
 	@Autowired

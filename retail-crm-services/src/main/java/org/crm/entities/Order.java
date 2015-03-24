@@ -35,8 +35,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NamedQueries({
 		@NamedQuery(name = Order.findAllOrdersByDepartment, query = "select o from Order o where o.responsibleDepartment.id=:department_id"),
 		@NamedQuery(name = Order.findAllOrdersByEmployee, query = "select o from Order o where o.responsibleEmployee.id=:employee_id"),
-		@NamedQuery(name = Order.findOrdersCreatedAfterStartDate, query = "select o from Order o where o.create_ts > :startDate"),
-		@NamedQuery(name = Order.findOrdersCreatedBetweenTimeInterval, query = "select o from Order o where o.create_ts > :startDate and o.create_ts <= :endDate") })
+		@NamedQuery(name = Order.findOrdersCreatedAfterStartDate, query = "select o from Order o where o.createTs > :startDate"),
+		@NamedQuery(name = Order.findOrdersCreatedBetweenTimeInterval, query = "select o from Order o where o.createTs > :startDate and o.createTs <= :endDate") })
 @XmlRootElement
 public class Order implements Serializable {
 
@@ -71,7 +71,7 @@ public class Order implements Serializable {
 
 	@Convert(converter = BooleanToYNConverter.class)
 	@Column(name = "is_paid", nullable = false)
-	private boolean is_paid;
+	private boolean paid;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "order_type")
@@ -87,15 +87,15 @@ public class Order implements Serializable {
 
 	@Convert(converter = BooleanToYNConverter.class)
 	@Column(name = "is_root", nullable = false)
-	private boolean is_root;
+	private boolean root;
 
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
 	@Column(name = "create_ts")
-	private Timestamp create_ts;
+	private Timestamp createTs;
 
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
 	@Column(name = "delta_ts")
-	private Timestamp delta_ts;
+	private Timestamp deltaTs;
 
 	@OneToMany(mappedBy = "parentOrder", cascade={CascadeType.ALL})
 	@JsonIgnore
@@ -133,12 +133,12 @@ public class Order implements Serializable {
 		this.responsibleEmployee = responsibleEmployee;
 	}
 
-	public boolean isIs_paid() {
-		return is_paid;
+	public boolean isPaid() {
+		return paid;
 	}
 
-	public void setIs_paid(boolean is_paid) {
-		this.is_paid = is_paid;
+	public void setPaid(boolean paid) {
+		this.paid = paid;
 	}
 
 	public OrderType getOrderType() {
@@ -157,20 +157,20 @@ public class Order implements Serializable {
 		this.orderStatus = orderStatus;
 	}
 
-	public Timestamp getCreate_ts() {
-		return create_ts;
+	public Timestamp getCreateTs() {
+		return createTs;
 	}
 
-	public void setCreate_ts(Timestamp create_ts) {
-		this.create_ts = create_ts;
+	public void setCreateTs(Timestamp createTs) {
+		this.createTs = createTs;
 	}
 
-	public Timestamp getDelta_ts() {
-		return delta_ts;
+	public Timestamp getDeltaTs() {
+		return deltaTs;
 	}
 
-	public void setDelta_ts(Timestamp delta_ts) {
-		this.delta_ts = delta_ts;
+	public void setDeltaTs(Timestamp deltaTs) {
+		this.deltaTs = deltaTs;
 	}
 
 	public Order getParentOrder() {
@@ -189,12 +189,12 @@ public class Order implements Serializable {
 		this.subOrders = subOrders;
 	}
 
-	public boolean isIs_root() {
-		return is_root;
+	public boolean isRoot() {
+		return root;
 	}
 
-	public void setIs_root(boolean is_root) {
-		this.is_root = is_root;
+	public void setRoot(boolean root) {
+		this.root = root;
 	}
 
 	public enum OrderType {

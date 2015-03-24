@@ -47,17 +47,17 @@ public class OrderDaoImplTest {
 	public void BooleanConverterTest(){
 		Order order1 = orderDao.find(10000001);
 		Assert.assertNotNull(order1);
-		Assert.assertTrue(order1.isIs_root());
-		order1.setIs_root(false);
+		Assert.assertTrue(order1.isRoot());
+		order1.setRoot(false);
 		order1.setOrderStatus(OrderStatus.CANCELLED);
 		orderDao.saveOrUpdate(order1);
 		//second order to see if the false boolean value was converted to 'N' and stored in database
 		Order order2 = orderDao.find(10000001);
 		Assert.assertNotNull(order2);
 		Assert.assertTrue(order2.getOrderStatus()==OrderStatus.CANCELLED);
-		Assert.assertFalse(order2.isIs_root());
+		Assert.assertFalse(order2.isRoot());
 		//Roll back
-		order2.setIs_root(true);
+		order2.setRoot(true);
 		order2.setOrderStatus(OrderStatus.EXECUTED);
 		orderDao.saveOrUpdate(order2);
 	}

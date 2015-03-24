@@ -43,13 +43,13 @@ public class Warehouse implements Serializable {
 	private Integer id;
 	
 	@Column(name="address_id")
-	private Integer address_id;
+	private Integer addressId;
 	
 	@Column(name="name")
 	private String name;
 	
 	@Column(name="name_en")
-	private String name_en;
+	private String nameEn;
 
 	@ManyToMany(mappedBy="warehouses", fetch=FetchType.LAZY)
 	private List<Store> stores;
@@ -64,7 +64,7 @@ public class Warehouse implements Serializable {
 	
 	
 	@Column(name="delta_ts")
-	private Timestamp delta_ts;
+	private Timestamp deltaTs;
 
 	public Integer getId() {
 		return this.id;
@@ -74,12 +74,12 @@ public class Warehouse implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getAddress_id() {
-		return address_id;
+	public Integer getAddressId() {
+		return addressId;
 	}
 
-	public void setAddress_id(Integer address_id) {
-		this.address_id = address_id;
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
 	}
 
 	public String getName() {
@@ -90,19 +90,19 @@ public class Warehouse implements Serializable {
 		this.name = name;
 	}
 
-	public String getName_en() {
-		return name_en;
+	public String getNameEn() {
+		return nameEn;
 	}
 
-	public void setName_en(String name_en) {
-		this.name_en = name_en;
+	public void setNameEn(String nameEn) {
+		this.nameEn = nameEn;
 	}
 
-	public Timestamp getDelta_ts() {
-		return delta_ts;
+	public Timestamp getDeltaTs() {
+		return deltaTs;
 	}
 
-	public void setDelta_ts(Timestamp delta_ts) {
-		this.delta_ts = delta_ts;
+	public void setDeltaTs(Timestamp deltaTs) {
+		this.deltaTs = deltaTs;
 	}	
 }

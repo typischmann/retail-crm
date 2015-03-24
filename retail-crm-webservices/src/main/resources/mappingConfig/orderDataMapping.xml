@@ -13,7 +13,7 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 			<b>parentOrderId</b>
 		</field>
 		<field>
-			<a>is_paid</a>
+			<a>paid</a>
 			<b is-accessible="true">paid</b>
 		</field>
 		<field>
@@ -21,15 +21,15 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 			<b>orderStatus</b>
 		</field>
 		<field>
-			<a>is_root</a>
+			<a>root</a>
 			<b is-accessible="true">root</b>
 		</field>
 		<field>
-			<a>create_ts</a>
+			<a>createTs</a>
 			<b is-accessible="true">createTs</b>
 		</field>
 		<field>
-			<a>delta_ts</a>
+			<a>deltaTs</a>
 			<b is-accessible="true">deltaTs</b>
 		</field>
 	</mapping>

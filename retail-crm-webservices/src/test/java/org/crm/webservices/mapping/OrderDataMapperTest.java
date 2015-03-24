@@ -49,10 +49,10 @@ public class OrderDataMapperTest {
 		OrderInfoDto orderInfoDto = orderDataMapper.map(order,OrderInfoDto.class);
 		Assert.assertTrue(orderInfoDto.getId()==order.getId());
 		Assert.assertTrue(orderInfoDto.getParentOrderId()==order.getParentOrder().getId());
-		Assert.assertTrue(order.isIs_paid());
+		Assert.assertTrue(order.isPaid());
 		orderInfoDto.setPaid(false);
 		orderDataMapper.map(orderInfoDto, order);
-		Assert.assertFalse(order.isIs_paid());
+		Assert.assertFalse(order.isPaid());
 		
 	}
 	

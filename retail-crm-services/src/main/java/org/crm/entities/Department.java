@@ -55,7 +55,7 @@ public class Department implements Serializable {
 	private String name;
 
 	@Column(name = "name_en")
-	private String name_en;
+	private String nameEn;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_department_id")
@@ -96,12 +96,12 @@ public class Department implements Serializable {
 		this.name = name;
 	}
 
-	public String getName_en() {
-		return name_en;
+	public String getNameEn() {
+		return nameEn;
 	}
 
-	public void setName_en(String name_en) {
-		this.name_en = name_en;
+	public void setNameEn(String nameEn) {
+		this.nameEn = nameEn;
 	}
 
 	public Department getParent() {

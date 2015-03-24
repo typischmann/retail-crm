@@ -45,7 +45,7 @@ public class JsonSerializerResourceTest {
         Department department = new Department();
         department.setId(1);
         department.setName("White House");
-        department.setName_en("WH");
+        department.setNameEn("WH");
         employee1.setDepartment(department);
         employee1.setStartDate(new Date(System.currentTimeMillis()));
         employee1.setNote("This guy forces people to buy health care.");
