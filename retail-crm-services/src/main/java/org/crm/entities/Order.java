@@ -90,7 +90,7 @@ public class Order implements Serializable {
 	private boolean root;
 
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
-	@Column(name = "create_ts")
+	@Column(name = "create_ts", updatable=false)
 	private Timestamp createTs;
 
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)

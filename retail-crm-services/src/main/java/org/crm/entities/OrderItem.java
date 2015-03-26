@@ -51,7 +51,7 @@ public class OrderItem implements Serializable {
 
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
 	@Column(name = "delta_ts")
-	private Timestamp delta_ts;
+	private Timestamp deltaTs;
 
 	public Integer getId() {
 		return Id;
@@ -95,12 +95,12 @@ public class OrderItem implements Serializable {
 		this.price = price;
 	}
 
-	public Timestamp getDelta_ts() {
-		return delta_ts;
+	public Timestamp getDeltaTs() {
+		return deltaTs;
 	}
 
-	public void setDelta_ts(Timestamp delta_ts) {
-		this.delta_ts = delta_ts;
+	public void setDeltaTs(Timestamp deltaTs) {
+		this.deltaTs = deltaTs;
 	}
 
 }

@@ -15,7 +15,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import org.crm.entities.adapter.TimeStampAdapter;
+/**
+ * This is the entity class for the changes of inventory
+ * @author JIBAO
+ *
+ */
 @Entity
 @Table(name="Inventory_Change_Records")
 @XmlRootElement
@@ -46,6 +53,7 @@ public class InventoryChangeRecord {
 	@Column(name = "change_status")
 	private ChangeStatus changeStatus;
 	
+	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
 	@Column(name="delta_ts")
 	private Timestamp deltaTs;
 	
@@ -110,6 +118,6 @@ public class InventoryChangeRecord {
 	}
 	
 	public enum ChangeStatus{
-		BEGIN, FINISHED,CANCELLED
+		BEGIN, RESERVED, FINISHED,CANCELLED
 	}
 }

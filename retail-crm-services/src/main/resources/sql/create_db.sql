@@ -113,14 +113,18 @@ constraint PK_EMPLOYEE primary key (ID)
 
 /*=========================================================================================================*/
 /* Table: INVENTORY_CURRENT_ITEMS	This table stores the current inventory in real time				   */
+/* It should have a cascading trigger to update the amount status for the higher level deparment,		   */
+/* but take care of infinite recursion trigger															   */				
 /*=========================================================================================================*/
 create table INVENTORY_CURRENT_ITEMS (
 ID                   			SERIAL,
 PRODUCT_ID           			INTEGER                        not null,
-DEPARTMENT_ID    	 			INTEGER                        not null,--refering to store or warehouse
-AMOUNT               			NUMERIC(15,2)                  not null,
-INVENTORY_RECORD_ID			 	INTEGER						   not null, --refering to the change which causes the current inventory from last one
+DEPARTMENT_ID    	 			INTEGER                        not null,--refering to store or warehouse, if 0, it should be a global overview 
+REAL_AMOUNT               		NUMERIC(15,2)                  not null,--The really amount in the department
+RESERVED_AMOUNT					NUMERIC(15,2)				   default 0,--The amount of items which are reserved, booked, pre ordered, e. g. such as a new created order item
+INVENTORY_CHANGE_RECORD_ID		INTEGER						   not null, --refering to the change which causes the current inventory from last one
 CREATE_TS			 			TIMESTAMP					   default current_timestamp,
+DELTA_TS			 			TIMESTAMP					   default current_timestamp,
 constraint PK_INVENTORY_CURRENT_ITEMS primary key (ID)
 );
 
