@@ -139,6 +139,7 @@ ORDER_ITEM_ID  			integer,
 AMOUNT_VALUE			integer,
 CHANGE_TYPE				integer,						-- 0 income 1 outcome
 CHANGE_STATUS			integer,						-- 0 begin 1 finished 2 cancelled
+CREATE_TS			 	timestamp						default current_timestamp,
 DELTA_TS			 	timestamp						default current_timestamp,
 constraint PK_INVENTORY_CHANGE_RECORDS primary key (ID)
 );

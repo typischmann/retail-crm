@@ -25,7 +25,7 @@ public class OrderDaoImpl extends AbstractGenericDaoImpl<Integer, Order> impleme
 	 */
 	public List<Order> findAllOrdersByDepartment(Department department) {
 		TypedQuery<Order> query=em.createNamedQuery(Order.findAllOrdersByDepartment, Order.class);
-		query.setParameter("department_id", department.getId());
+		query.setParameter("departmentId", department.getId());
 		return query.getResultList();
 	}
 
@@ -34,7 +34,7 @@ public class OrderDaoImpl extends AbstractGenericDaoImpl<Integer, Order> impleme
 	 */
 	public List<Order> findAllOrdersByEmployee(Employee employee) {
 		TypedQuery<Order> query=em.createNamedQuery(Order.findAllOrdersByEmployee, Order.class);
-		query.setParameter("employee_id", employee.getId());
+		query.setParameter("employeeId", employee.getId());
 		return query.getResultList();
 	}
 

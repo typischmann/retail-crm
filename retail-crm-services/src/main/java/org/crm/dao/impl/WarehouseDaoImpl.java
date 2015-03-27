@@ -17,19 +17,35 @@ public class WarehouseDaoImpl extends AbstractGenericDaoImpl<Integer, Warehouse>
 	public WarehouseDaoImpl(){
 		super(Warehouse.class);
 	}
-	public Warehouse getWarehouseById(Integer id) {		
-		return this.find(id);
-	}
+	
 
-	public List<Warehouse> getWarehouseByManager(Employee manager) {
-		TypedQuery<Warehouse> query=em.createNamedQuery(Warehouse.findWarehouseByManager, Warehouse.class);
-		query.setParameter("manager_id", manager.getId());
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Warehouse> findWarehouseByManager(Employee manager) {
+		TypedQuery<Warehouse> query=em.createNamedQuery(Warehouse.findWarehouseByManagerId, Warehouse.class);
+		query.setParameter("managerId", manager.getId());
 		return query.getResultList();
 	}
 
-	public Warehouse getWarehouseByName(String name) {
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Warehouse findWarehouseByName(String name) {
 		TypedQuery<Warehouse> query=em.createNamedQuery(Warehouse.findWarehouseByName, Warehouse.class);
 		query.setParameter("name", name);
+		return query.getSingleResult();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Warehouse findWarehouseByDepartmentId(Integer departmentId) {
+		TypedQuery<Warehouse> query = em.createNamedQuery(Warehouse.findWarehouseByDepartmentId, Warehouse.class);
+		query.setParameter("departmentId", departmentId);
 		return query.getSingleResult();
 	}
 

@@ -1,5 +1,6 @@
 package org.crm.entities;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ import org.crm.entities.adapter.TimeStampAdapter;
  */
 @Entity
 @Table(name="inventory_current_items")
-public class InventoryCurrentItem {
+public class InventoryCurrentItem implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="inventory_current_item_seq")

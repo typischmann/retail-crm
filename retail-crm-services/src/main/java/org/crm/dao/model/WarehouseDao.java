@@ -7,25 +7,26 @@ import org.crm.entities.Warehouse;
 
 public interface WarehouseDao extends AbstractGenericDao<Integer, Warehouse> {
 
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public Warehouse getWarehouseById(Integer id);
 	
 	/**
 	 * 
 	 * @param manager
 	 * @return
 	 */
-	public List<Warehouse> getWarehouseByManager(Employee manager);
+	public List<Warehouse> findWarehouseByManager(Employee manager);
 	
 	/**
 	 * 
 	 * @param name
 	 * @return
 	 */
-	public Warehouse getWarehouseByName(String name);
+	public Warehouse findWarehouseByName(String name);
+	
+	/**
+	 * 
+	 * @param departmentId
+	 * @return
+	 */
+	public Warehouse findWarehouseByDepartmentId(Integer departmentId);
 
 }

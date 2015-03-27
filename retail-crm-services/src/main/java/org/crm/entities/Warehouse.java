@@ -22,8 +22,9 @@ import javax.persistence.Id;
 @Entity
 @Table(name="warehouse")
 @NamedQueries({
-	@NamedQuery(name=Warehouse.findWarehouseByManager, query="select w from Warehouse w where w.manager.id = :manager_id"),
-	@NamedQuery(name=Warehouse.findWarehouseByName, query="select w from Warehouse w where w.name = :name")
+	@NamedQuery(name=Warehouse.findWarehouseByManagerId, query="select w from Warehouse w where w.manager.id = :managerId"),
+	@NamedQuery(name=Warehouse.findWarehouseByName, query="select w from Warehouse w where w.name = :name"),
+	@NamedQuery(name=Warehouse.findWarehouseByDepartmentId, query="select w from Warehouse w where w.department.id = :departmentId")
 })
 public class Warehouse implements Serializable {
 	
@@ -34,7 +35,9 @@ public class Warehouse implements Serializable {
 
 	static public final String findWarehouseByName="findWarehouseByName";
 	
-	static public final String findWarehouseByManager="findWarehouseByManager";
+	static public final String findWarehouseByManagerId="findWarehouseByManagerId";
+	
+	static public final String findWarehouseByDepartmentId="findWarehouseByDepartmentId";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="warehouse_seq")
