@@ -9,54 +9,18 @@
 							   http://www.springframework.org/schema/tx
 							   http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://localhost:5432/postgres" />
-		<property name="username" value="postgres" />
-		<property name="password" value="zdc@1988" />
-	</bean>
+    <context:component-scan base-package="org.crm" />
+    <context:annotation-config />
 
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="emf" />
-	</bean>
-	
-    <tx:annotation-driven transaction-manager ="transactionManager" />
-	
-	<bean id="emf"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-		</property>
-		<property name="packagesToScan" value="org.crm.entities" />
-		<property name="jpaProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.PostgreSQLDialect
-				</prop>
-				<prop key="hibernate.max_fetch_depth">3</prop>
-				<prop key="hibernate.jdbc.fetch_size">50</prop>
-				<prop key="hibernate.jdbc.batch_size">10</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.default_schema">dbo</prop>
-				<prop key="hibernate.jdbc.lob.non_contextual_creation">true</prop>
-				<prop key="hibernate.transaction.flush_before_completion">true</prop>
-				<prop key="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.SunOneJtaPlatform
-				</prop>
-			</props>
-		</property>
-	</bean>
-
-	<bean id="em"
-		class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
-		<property name="entityManagerFactory" ref="emf" />
-	</bean>
-
+    <import resource="database/hibernate.xml"/>
+    <import resource="database/data-source.xml"/>
+    <!-- credentials and configurations for database -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>properties/database.properties</value>
+        </property>
+    </bean>
+    <!-- Importing mappingContext from main resource -->
 	<import resource="classpath:mappingContext.xml" />
-
-
-	<context:component-scan base-package="org.crm" />
-	<context:annotation-config />
 
 </beans>
