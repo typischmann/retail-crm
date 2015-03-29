@@ -72,7 +72,7 @@ public class Employee implements Serializable {
     @Column(name = "end_date")
     private Date endDate;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "department_id")
     private Department department;
 

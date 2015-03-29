@@ -15,7 +15,6 @@ import org.crm.entities.OrderItem;
 import org.crm.services.api.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 @Service("orderService")
 @Transactional
@@ -115,7 +114,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order saveOrUpdateOrderItemByOrderId(Integer orderId, OrderItem orderItem) {
 		Order order = orderDao.find(orderId);
-		order.getOrderItems().add(orderItem);
+		order.getOrderItems().add(orderItem);		
 		return orderDao.saveOrUpdate(order);
 	}
 

@@ -11,7 +11,6 @@ import org.crm.entities.Department;
 import org.crm.entities.Employee;
 import org.crm.entities.Order;
 import org.springframework.stereotype.Repository;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 
 @Repository("orderDao")
 @Transactional

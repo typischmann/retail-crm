@@ -28,7 +28,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.crm.entities.adapter.TimeStampAdapter;
 import org.crm.entities.converter.BooleanToYNConverter;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "Orders")
@@ -37,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		@NamedQuery(name = Order.findAllOrdersByEmployee, query = "select o from Order o where o.responsibleEmployee.id=:employeeId"),
 		@NamedQuery(name = Order.findOrdersCreatedAfterStartDate, query = "select o from Order o where o.createTs > :startDate"),
 		@NamedQuery(name = Order.findOrdersCreatedBetweenTimeInterval, query = "select o from Order o where o.createTs > :startDate and o.createTs <= :endDate") })
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @XmlRootElement
 public class Order implements Serializable {
 
@@ -56,17 +59,14 @@ public class Order implements Serializable {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "RESPONSIBLE_DEPARTMENT_ID")
-	@JsonIgnore
 	private Department responsibleDepartment;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "responsible_employee_id")
-	@JsonIgnore
 	private Employee responsibleEmployee;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_order_id", nullable = true)
-	@JsonIgnore
 	private Order parentOrder;
 
 	@Convert(converter = BooleanToYNConverter.class)
@@ -78,7 +78,6 @@ public class Order implements Serializable {
 	private OrderType orderType;
 
 	@OneToMany(mappedBy = "parentOrder", cascade={CascadeType.ALL})
-	@JsonIgnore
 	private List<Order> subOrders;
 
 	@Enumerated(value=EnumType.ORDINAL)
@@ -98,7 +97,6 @@ public class Order implements Serializable {
 	private Timestamp deltaTs;
 
 	@OneToMany(mappedBy = "parentOrder", cascade={CascadeType.ALL})
-	@JsonIgnore
 	private List<OrderItem> orderItems;
 
 	public List<OrderItem> getOrderItems() {
