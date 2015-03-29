@@ -1,6 +1,7 @@
 package org.crm.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.crm.entities.adapter.SqlDateAdapter;
 import org.crm.entities.adapter.TimeStampAdapter;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.sql.Date;
@@ -18,6 +20,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "employee")
 @NamedQueries({
+        @NamedQuery(name = Employee.findEmployeesById,
+                query = "select e from Employee e where e.id = :id"),
         @NamedQuery(name = Employee.findAllEmployeesSortedByName,
                 query = "select e from Employee e order by  e.secondName ,e.firstName"),
         @NamedQuery(name = Employee.findEmployeesByFullName,
@@ -43,6 +47,7 @@ public class Employee implements Serializable {
      */
     private static final long serialVersionUID = -5673926095030652190L;
 
+    public static final String findEmployeesById = "getEmployeeById";
     public static final String findAllEmployeesSortedByName = "getAllEmployeesSortedByName";
     public static final String findEmployeesByFullName = "getEmployeesByFullName";
     public static final String findEmployeesBySecondNameAndSortedByFirstName = "getEmployeesBySecondNameAndSortedByFirstName";
@@ -74,6 +79,8 @@ public class Employee implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "department_id")
+    @JsonIgnore
+    @XmlTransient
     private Department department;
 
     @Column(name = "note")

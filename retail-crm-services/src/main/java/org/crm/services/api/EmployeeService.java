@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface EmployeeService {
 
+    Employee findEmployeeById(int id);
     /**
      *
      * @return the list of employees sorted by first name and second name..

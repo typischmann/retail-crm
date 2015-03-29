@@ -11,6 +11,12 @@ import java.util.List;
 public interface EmployeeWebService {
     /**
      *
+     * @param id the unique id of the employee.
+     * @return the matched employee object.
+     */
+    Employee findEmployeeById(int id);
+    /**
+     *
      * @return all employees.
      */
     List<Employee> findAllEmployeesSortedByName();

@@ -34,6 +34,16 @@ public class EmployeeResource implements EmployeeWebService {
     }
 
     @GET
+    @Path("ById/{id}")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Override
+    public Employee findEmployeeById(@PathParam("id") int id)
+    {
+        return employeeService.findEmployeeById(id);
+    }
+
+    @GET
     @Path("FirstName/{firstName}/SecondName/{secondName}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
