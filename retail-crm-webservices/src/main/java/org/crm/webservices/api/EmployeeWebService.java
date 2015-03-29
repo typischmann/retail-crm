@@ -1,6 +1,7 @@
 package org.crm.webservices.api;
 
 import org.crm.entities.Employee;
+import org.crm.webservices.dto.EmployeeInfoDto;
 
 import java.sql.Date;
 import java.util.List;
@@ -14,12 +15,12 @@ public interface EmployeeWebService {
      * @param id the unique id of the employee.
      * @return the matched employee object.
      */
-    Employee findEmployeeById(int id);
+    EmployeeInfoDto findEmployeeById(int id);
     /**
      *
      * @return all employees.
      */
-    List<Employee> findAllEmployeesSortedByName();
+    List<EmployeeInfoDto> findAllEmployeesSortedByName();
 
     /**
      *
@@ -27,7 +28,7 @@ public interface EmployeeWebService {
      * @param secondName secondName.
      * @return the matching employees.
      */
-    List<Employee> findEmployeesByFullName(String firstName, String secondName);
+    List<EmployeeInfoDto> findEmployeesByFullName(String firstName, String secondName);
 
     /**
      *
@@ -35,14 +36,14 @@ public interface EmployeeWebService {
      * @param endDate fire end date in milliseconds.
      * @return the matching employees.
      */
-    List<Employee> findEmployeesBetweenDurationAndSortedByName(long startDate, long endDate);
+    List<EmployeeInfoDto> findEmployeesBetweenDurationAndSortedByName(long startDate, long endDate);
 
     /**
      * POST method
      * @param employee
      * @return the employee which got created.
      */
-    Employee createEmployee(Employee employee);
+    EmployeeInfoDto createEmployee(Employee employee);
 
     /**
      * POST method.

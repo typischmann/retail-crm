@@ -54,7 +54,7 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 		</field>
 		<field>
 			<a>department.id</a>
-			<b is-accessible="true">departmentId</b>
+			<b>departmentId</b>
 		</field>
 		<field>
 			<a>note</a>
