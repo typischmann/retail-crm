@@ -3,6 +3,7 @@ package org.crm.util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 
 import java.io.IOException;
 
@@ -11,9 +12,14 @@ public class JacksonJsonSerializer {
     private static ObjectWriter objectWriter;
 
     private static ObjectMapper objectMapper;
+    
+    private static Hibernate4Module hibernate4Module;
 
     static {
         objectMapper = new ObjectMapper();
+        hibernate4Module = new Hibernate4Module();
+        hibernate4Module.enable(Hibernate4Module.Feature.FORCE_LAZY_LOADING);
+        objectMapper.registerModule(hibernate4Module);
         objectWriter = objectMapper.writer().withDefaultPrettyPrinter();
     }
 
