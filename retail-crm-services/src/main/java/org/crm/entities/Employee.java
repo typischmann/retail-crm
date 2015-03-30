@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.sql.Date;
@@ -18,7 +19,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "employee")
-@NamedQueries({
+@NamedQueries(value = {
         @NamedQuery(name = Employee.findEmployeesById,
                 query = "select e from Employee e where e.id = :id"),
         @NamedQuery(name = Employee.findAllEmployeesSortedByName,
@@ -78,6 +79,7 @@ public class Employee implements Serializable {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "department_id")
+    @XmlTransient
     private Department department;
 
     @Column(name = "note")

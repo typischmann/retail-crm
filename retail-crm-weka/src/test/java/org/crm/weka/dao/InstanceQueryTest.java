@@ -39,7 +39,7 @@ public class InstanceQueryTest {
 		instanceQuery.initialize(props);
 		instanceQuery.setDatabaseURL("jdbc:postgresql://localhost:5432/Test");
 		instanceQuery.setUsername("postgres");
-		instanceQuery.setPassword("bjy1986717");
+		instanceQuery.setPassword("test");
 		//instanceQuery.execute("set");
 		Instances instances=instanceQuery.retrieveInstances("select * from dbo.department");
 		
@@ -56,7 +56,7 @@ public class InstanceQueryTest {
 		Assert.assertTrue(propsFile.exists());
 		instanceQuery.initialize(propsFile);
 		instanceQuery.setUsername("postgres");
-		instanceQuery.setPassword("bjy1986717");
+		instanceQuery.setPassword("test");
 		
 		Instances instances=instanceQuery.retrieveInstances("select * from dbo.department");
 		

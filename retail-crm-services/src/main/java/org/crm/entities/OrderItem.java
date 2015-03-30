@@ -22,7 +22,7 @@ import org.crm.entities.adapter.TimeStampAdapter;
 
 @Entity
 @Table(name = "Order_Items")
-@NamedQueries({ @NamedQuery(name = OrderItem.findOrderItemsByOrderId, query = "select i from OrderItem i where i.parentOrder.id=:orderId") })
+@NamedQueries(value = {@NamedQuery(name = OrderItem.findOrderItemsByOrderId, query = "select i from OrderItem i where i.parentOrder.id=:orderId")})
 @XmlRootElement
 public class OrderItem implements Serializable {
 

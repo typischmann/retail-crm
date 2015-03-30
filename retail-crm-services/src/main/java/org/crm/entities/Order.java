@@ -14,11 +14,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "Orders")
-@NamedQueries({
+@NamedQueries(value = {
 		@NamedQuery(name = Order.findAllOrdersByDepartment, query = "select o from Order o where o.responsibleDepartment.id=:departmentId"),
 		@NamedQuery(name = Order.findAllOrdersByEmployee, query = "select o from Order o where o.responsibleEmployee.id=:employeeId"),
 		@NamedQuery(name = Order.findOrdersCreatedAfterStartDate, query = "select o from Order o where o.createTs > :startDate"),
-		@NamedQuery(name = Order.findOrdersCreatedBetweenTimeInterval, query = "select o from Order o where o.createTs > :startDate and o.createTs <= :endDate") })
+		@NamedQuery(name = Order.findOrdersCreatedBetweenTimeInterval, query = "select o from Order o where o.createTs > :startDate and o.createTs <= :endDate")})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @XmlRootElement
 public class Order implements Serializable {

@@ -45,5 +45,7 @@ drop table STORE;
 
 drop table STORE_WAREHOUSE;
 
+drop table SYS_USERS;
+
 drop table WAREHOUSE;
 

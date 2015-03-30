@@ -47,5 +47,7 @@ public class InventoryChangeRecordDaoImpl extends
 		query.setParameter("orderItemId",orderItemId);
 		return query.getResultList();
 	}
+	
+	
 
 }
