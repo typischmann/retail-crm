@@ -79,7 +79,6 @@ public class Employee implements Serializable {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "department_id")
-    @JsonIgnore
     @XmlTransient
     private Department department;
 

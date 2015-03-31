@@ -20,4 +20,12 @@ import javax.transaction.Transactional;
 public class EmployeeResourceTest {
     @Autowired
     private EmployeeDao employeeDao;
+    
+    /**
+     * It is only temporarily method to complete a Junit Test Case
+     */
+    @Test
+    public void tempTest(){
+    	
+    }
 }

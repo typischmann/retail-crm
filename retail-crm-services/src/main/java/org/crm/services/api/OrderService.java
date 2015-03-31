@@ -42,6 +42,12 @@ public interface OrderService {
 	/**
 	 * 
 	 * @param orderId
+	 */
+	public void cancellOrderById(Integer orderId);
+	
+	/**
+	 * 
+	 * @param orderId
 	 * @return
 	 */
 	public Order findOrderById(Integer orderId);
@@ -66,7 +72,7 @@ public interface OrderService {
 	 * @param orderId
 	 * @return
 	 */
-	public Order saveOrUpdateOrderItemByOrderId(Integer orderId, OrderItem orderItem);
+	public Order addOrderItemByOrderId(Integer orderId, OrderItem orderItem);
 
 	/**
 	 * 

@@ -66,6 +66,18 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void cancellOrderById(Integer orderId) {
+		Order order = orderDao.find(orderId);
+		for(OrderItem orderItem : order.getOrderItems()){
+			//TODO: changing the inventory change record status to cancell
+		}
+		
+	}
+
+	/**
 	 * Set the common configuration for a order.
 	 * @param orderType   The expected order type
 	 * @param employee	  The information of responsible user
@@ -112,9 +124,10 @@ public class OrderServiceImpl implements OrderService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Order saveOrUpdateOrderItemByOrderId(Integer orderId, OrderItem orderItem) {
+	public Order addOrderItemByOrderId(Integer orderId, OrderItem orderItem) {
 		Order order = orderDao.find(orderId);
-		order.getOrderItems().add(orderItem);		
+		order.getOrderItems().add(orderItem);	
+		//TODO: Add Inventory Change Record accordingly
 		return orderDao.saveOrUpdate(order);
 	}
 
