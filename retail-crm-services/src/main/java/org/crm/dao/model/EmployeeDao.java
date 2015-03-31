@@ -8,6 +8,12 @@ import org.crm.entities.Employee;
 public interface EmployeeDao extends AbstractGenericDao<Integer, Employee> {
 
 	/**
+	 *
+	 * @param id unique id of the employee.
+	 * @return the matched employee.
+	 */
+	public Employee findEmployeeById(int id);
+	/**
 	 * 
 	 * @return
 	 */

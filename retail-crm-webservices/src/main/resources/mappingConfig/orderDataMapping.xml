@@ -58,4 +58,36 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 			<b>amount</b>
 		</field>
 	</mapping>
+	<mapping type="one-way">
+		<class-a>org.crm.entities.Employee</class-a>
+		<class-b>org.crm.webservices.dto.EmployeeInfoDto</class-b>
+		<field>
+			<a>id</a>
+			<b>id</b>
+		</field>
+		<field>
+			<a>firstName</a>
+			<b>firstName</b>
+		</field>
+		<field>
+			<a>secondName</a>
+			<b>secondName</b>
+		</field>
+		<field>
+			<a>startDate</a>
+			<b>startDate</b>
+		</field>
+		<field>
+			<a>endDate</a>
+			<b>endDate</b>
+		</field>
+		<field>
+			<a>department.id</a>
+			<b is-accessible="true">departmentId</b>
+		</field>
+		<field>
+			<a>note</a>
+			<b>note</b>
+		</field>
+	</mapping>
 </mappings>

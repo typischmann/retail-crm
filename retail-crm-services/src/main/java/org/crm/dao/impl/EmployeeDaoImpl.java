@@ -19,7 +19,14 @@ public class EmployeeDaoImpl extends AbstractGenericDaoImpl<Integer, Employee> i
 	public EmployeeDaoImpl(){
 		super(Employee.class);
 	}
-	
+
+	@Override
+	public Employee findEmployeeById(int id) {
+		TypedQuery<Employee> query=em.createNamedQuery(Employee.findEmployeesById, Employee.class);
+		query.setParameter("id", id);
+		return query.getSingleResult();
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
