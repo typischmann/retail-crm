@@ -4,6 +4,19 @@
  */
 
 set search_path to dbo;
+--check if this extension existed
+--TODO: Need a test
+create or replace function install_encryption_extension()
+return void as $$
+begin
+	if not exists (select 1 from pg_catalog.pg_available_extensions ex where ex.name = 'pgcrypto')
+	then
+	create extension pgcrypto;
+	end if;
+end;
+$$ language plpgsql;
+
+select install_encryption_extension();
 /*=========================================================================================================*/
 /* Table: ADDRESS                                               										   */
 /*=========================================================================================================*/
@@ -340,6 +353,23 @@ STORE_ID			 INTEGER                      	not null,
 WAREHOUSE_ID 		 INTEGER                      	not null,
 constraint PK_STORE_WAREHOUSE primary key (ID)
 );
+
+/*==============================================================*/
+/* Table: SYS_USER                                              */
+/*																*/
+/*==============================================================*/
+create table SYS_USER (
+ID                   INTEGER                        not null,
+USER_NAME            VARCHAR(64)                    not null,
+USER_PASSWORD        VARCHAR(64)                    not null, --Here storing a encrypted password
+AUTHORIZATION_LEVEL  INTEGER						not null, --The permission of the user
+USER_STATUS			 INTEGER						not null, --CREATED, VERIFIED, BLOCKED
+USER_TYPE			 INTEGER						not null, --Personal Customer, Organization Customer, Employee, Supplier
+START_DATE           DATE                           not null,
+END_DATE           	 DATE,
+constraint PK_SYS_USER primary key (ID)
+);
+
 
 /*=========================================================================================================*/
 /* Table: WAREHOUSE                                             										   */
