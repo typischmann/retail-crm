@@ -1,7 +1,5 @@
-﻿/**
- * if encoding can not be recognized, the following command can be used
- * set client_encoding to 'UTF-8';
- */
+-- if encoding can not be recognized, the following command can be used
+-- set client_encoding to 'UTF-8';
 set client_encoding to 'UTF-8';
 set search_path to dbo;
 insert into CITY values(1,1, 'zz', 'ZHENZHOU', '0043',timestamp '2015-03-08 12:00:00');

@@ -1,22 +1,13 @@
-﻿/*
- * for installing the table in Postgres Database can use the following command in the console
- * \i 'script_path'
- */
+-- for installing the table in Postgres Database can use the following command in the console
+-- \i 'script_path'
 
 set search_path to dbo;
---check if this extension existed
---TODO: Need a test
-create or replace function install_encryption_extension()
-return void as $$
-begin
-	if not exists (select 1 from pg_catalog.pg_available_extensions ex where ex.name = 'pgcrypto')
-	then
-	create extension pgcrypto;
-	end if;
-end;
-$$ language plpgsql;
 
-select install_encryption_extension();
+drop extension if exists pgcrypto;
+
+create extension pgcrypto;
+
+
 /*=========================================================================================================*/
 /* Table: ADDRESS                                               										   */
 /*=========================================================================================================*/
@@ -358,15 +349,16 @@ constraint PK_STORE_WAREHOUSE primary key (ID)
 /* Table: SYS_USER                                              */
 /*																*/
 /*==============================================================*/
-create table SYS_USER (
-ID                   INTEGER                        not null,
-USER_NAME            VARCHAR(64)                    not null,
-USER_PASSWORD        VARCHAR(64)                    not null, --Here storing a encrypted password
+create table SYS_USERS (
+ID                   SERIAL,
+USER_NAME            VARCHAR(64)                    unique not null,
+USER_PASSWORD        TEXT                    		not null, --Here storing a encrypted password
 AUTHORIZATION_LEVEL  INTEGER						not null, --The permission of the user
 USER_STATUS			 INTEGER						not null, --CREATED, VERIFIED, BLOCKED
 USER_TYPE			 INTEGER						not null, --Personal Customer, Organization Customer, Employee, Supplier
 START_DATE           DATE                           not null,
 END_DATE           	 DATE,
+DELTA_TS			 TIMESTAMP						default current_timestamp,
 constraint PK_SYS_USER primary key (ID)
 );
 
