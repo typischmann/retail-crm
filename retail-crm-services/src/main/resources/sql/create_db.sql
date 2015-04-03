@@ -353,13 +353,13 @@ create table SYS_USERS (
 ID                   SERIAL,
 USER_NAME            VARCHAR(64)                    unique not null,
 USER_PASSWORD        TEXT                    		not null, --Here storing a encrypted password
-AUTHORIZATION_LEVEL  INTEGER						not null, --The permission of the user
+AUTHORIZATION_LEVEL  INTEGER						default 0, --The permission of the user
 USER_STATUS			 INTEGER						not null, --CREATED, VERIFIED, BLOCKED
 USER_TYPE			 INTEGER						not null, --Personal Customer, Organization Customer, Employee, Supplier
 START_DATE           DATE                           not null,
 END_DATE           	 DATE,
 DELTA_TS			 TIMESTAMP						default current_timestamp,
-constraint PK_SYS_USER primary key (ID)
+constraint PK_SYS_USERS primary key (ID)
 );
 
 

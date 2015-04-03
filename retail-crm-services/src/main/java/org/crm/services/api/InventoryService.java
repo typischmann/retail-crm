@@ -10,8 +10,16 @@ import org.crm.entities.InventoryChangeRecord.ChangeStatus;
  */
 public interface InventoryService {
 
-	public InventoryChangeRecord addSingleChangeRecord(Integer OrderItemId,
-			Integer DepartmentId, ChangeStatus changeStatus, Integer amount);
+	/**
+	 * 
+	 * @param OrderItemId
+	 * @param DepartmentId
+	 * @param changeStatus
+	 * @param amount
+	 * @return
+	 */
+	public InventoryChangeRecord addSingleChangeRecord(Integer orderItemId,
+			Integer departmentId, ChangeStatus changeStatus, Integer amount);
 	
 
 }

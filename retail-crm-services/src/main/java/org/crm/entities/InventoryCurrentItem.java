@@ -11,9 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.crm.entities.adapter.TimeStampAdapter;
@@ -24,7 +27,15 @@ import org.crm.entities.adapter.TimeStampAdapter;
  */
 @Entity
 @Table(name="inventory_current_items")
+@NamedQueries({@NamedQuery(name=InventoryCurrentItem.findInventoryCurrentItemsByDepartmentId,
+query="select i from InventoryCurrentItem i where i.department.id=:departmentId"),
+	@NamedQuery(name=InventoryCurrentItem.findInventoryCurrentItemByDepartmentIdAndProductId,
+query="select i from InventoryCurrentItem i where i.department.id=:departmentId and i.product.id=:productId")})
 public class InventoryCurrentItem implements Serializable {
+	
+	public static final String findInventoryCurrentItemsByDepartmentId="findInventoryCurrentItemByDepartmentId";
+	
+	public static final String findInventoryCurrentItemByDepartmentIdAndProductId="findInventoryCurrentItemByDepartmentIdAndProductId";
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="inventory_current_item_seq")
@@ -55,6 +66,7 @@ public class InventoryCurrentItem implements Serializable {
 	private Timestamp createTs;
 	
 	@XmlJavaTypeAdapter(value = TimeStampAdapter.class)
+	@Version
 	@Column(name = "delta_ts")
 	private Timestamp deltaTs;
 
