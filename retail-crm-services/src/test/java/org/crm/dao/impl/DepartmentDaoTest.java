@@ -24,7 +24,6 @@ public class DepartmentDaoTest {
 	@Autowired
 	private DepartmentDao departmentDao;
 	
-	@Ignore
 	@Test
 	public void findDepartmentByIdTest(){
 		Department dep=departmentDao.findDepartmentById( 7);
@@ -38,7 +37,6 @@ public class DepartmentDaoTest {
 		Assert.assertNull(dep.getParent().getParent());
 	}
 
-	@Ignore
 	@Test
 	public void findDepartmentsByNameTest(){
 		List<Department> deps=departmentDao.findDepartmentsByName("NAR");

@@ -1,5 +1,6 @@
 package org.crm.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -23,13 +24,13 @@ import org.crm.entities.adapter.SqlDateAdapter;
 import org.crm.entities.adapter.TimeStampAdapter;
 
 @Entity
-@Table(name = "sys_users")
-@NamedStoredProcedureQueries({ @NamedStoredProcedureQuery(name = SysUser.authenticateUserByUserNameAndUserPassword, procedureName = "AUTHENTICATE_SYS_USER_FUNC", parameters = {
+@Table(name = "SYS_USERS")
+@NamedStoredProcedureQueries({ @NamedStoredProcedureQuery(name = SysUser.authenticateUserByUserNameAndUserPassword, procedureName = "dbo.authenticate_sys_user_func", parameters = {
 		@StoredProcedureParameter(name = "sys_user_name", type = String.class),
 		@StoredProcedureParameter(name = "sys_user_password", type = String.class) }) })
 @NamedQueries({ @NamedQuery(name = SysUser.findSysUserByUserName, query = "select s from SysUser s where s.userName=:userName") })
 @XmlRootElement
-public class SysUser {
+public class SysUser implements Serializable {
 
 	public static final String authenticateUserByUserNameAndUserPassword = "authenticateUserByUserNameAndUserPassword";
 
