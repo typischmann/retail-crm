@@ -129,9 +129,9 @@ FOR EACH ROW
 EXECUTE PROCEDURE  SYS_USER_BEFORE_UT_FUNC();
 
 ---------------------------------------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION AUTHENTICATE_SYS_USER_FUNC(sys_user_name VARCHAR(64), sys_user_password VARCHAR(64))
+CREATE OR REPLACE FUNCTION AUTHENTICATE_SYS_USER_FUNC(sys_user_name VARCHAR(64), unencrypted_user_password VARCHAR(64))
 RETURNS BOOLEAN AS $AUTHENTICATE_SYS_USER$
 BEGIN
-	RETURN (SELECT ENCRYPTED_USER_PASSWORD = dbo.crypt(sys_user_password, ENCRYPTED_USER_PASSWORD) FROM dbo.SYS_USERS WHERE USER_NAME = sys_user_name);
+	RETURN (SELECT ENCRYPTED_USER_PASSWORD = dbo.crypt(unencrypted_user_password, ENCRYPTED_USER_PASSWORD) FROM dbo.SYS_USERS WHERE USER_NAME = sys_user_name);
 END;
 $AUTHENTICATE_SYS_USER$ LANGUAGE plpgsql;
