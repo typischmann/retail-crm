@@ -1,5 +1,6 @@
 package org.crm.dao.impl;
 
+import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
@@ -23,10 +24,13 @@ public class SysUserDaoImpl extends AbstractGenericDaoImpl<Integer, SysUser>
 	@Override
 	public Boolean authenticateUserByUserNameAndUserPassword(String userName,
 			String unencryptedPassword) {
-		StoredProcedureQuery query = em.createNamedStoredProcedureQuery(SysUser.authenticateUserByUserNameAndUserPassword);
+		/*StoredProcedureQuery query = em.createNamedStoredProcedureQuery(SysUser.authenticateUserByUserNameAndUserPassword);
 		query.setParameter("sys_user_name", userName);
 		query.setParameter("sys_user_password", unencryptedPassword);
-		query.execute();
+		query.execute();*/
+		Query query = em.createNamedQuery(SysUser.authenticateUserByUserNameAndUserPassword);
+		query.setParameter("sys_user_name", userName);
+		query.setParameter("sys_user_password", unencryptedPassword);
 		return (Boolean) query.getSingleResult();
 	}
 
