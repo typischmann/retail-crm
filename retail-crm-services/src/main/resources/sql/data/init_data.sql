@@ -288,5 +288,11 @@ values(10013, 13, 3, '格朗河帕沙', 'Ge Lang He Pa Sha', '格朗河帕沙', 
 
 alter sequence product_id_seq restart with 10014;
 
+insert into dbo.SYS_USERS (
+ID  ,USER_NAME,ENCRYPTED_USER_PASSWORD ,AUTHORIZATION_LEVEL,USER_STATUS,USER_TYPE,START_DATE,END_DATE)
+values(23,'jibao', 'bjy1986717',2,0,0,current_date, null);
+
+alter sequence sys_users_id_seq restart with 24;
+
 
 

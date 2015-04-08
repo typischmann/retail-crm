@@ -1,5 +1,6 @@
 package org.crm.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.NamedStoredProcedureQueries;
@@ -23,13 +26,14 @@ import org.crm.entities.adapter.SqlDateAdapter;
 import org.crm.entities.adapter.TimeStampAdapter;
 
 @Entity
-@Table(name = "sys_users")
-@NamedStoredProcedureQueries({ @NamedStoredProcedureQuery(name = SysUser.authenticateUserByUserNameAndUserPassword, procedureName = "AUTHENTICATE_SYS_USER_FUNC", parameters = {
+@Table(name = "SYS_USERS")
+/*@NamedStoredProcedureQueries({ @NamedStoredProcedureQuery(name = SysUser.authenticateUserByUserNameAndUserPassword, procedureName = "dbo.authenticate_sys_user_func", parameters = {
 		@StoredProcedureParameter(name = "sys_user_name", type = String.class),
-		@StoredProcedureParameter(name = "sys_user_password", type = String.class) }) })
+		@StoredProcedureParameter(name = "sys_user_password", type = String.class) }) })*/
+@NamedNativeQueries({@NamedNativeQuery(name =  SysUser.authenticateUserByUserNameAndUserPassword, query = "select dbo.authenticate_sys_user_func(:sys_user_name, :sys_user_password)")})
 @NamedQueries({ @NamedQuery(name = SysUser.findSysUserByUserName, query = "select s from SysUser s where s.userName=:userName") })
 @XmlRootElement
-public class SysUser {
+public class SysUser implements Serializable {
 
 	public static final String authenticateUserByUserNameAndUserPassword = "authenticateUserByUserNameAndUserPassword";
 
